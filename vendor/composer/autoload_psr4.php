@@ -11,6 +11,7 @@ return array(
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Wa72\\HtmlPageDom\\' => array($vendorDir . '/wa72/htmlpagedom/src'),
+    'Tests\\' => array($baseDir . '/tests'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
@@ -66,4 +67,5 @@ return array(
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Bakyt\\' => array($vendorDir . '/2bj/phanybar/src'),
     'App\\Docsets\\' => array($baseDir . '/app/Docsets'),
+    'App\\' => array($baseDir . '/app'),
 );

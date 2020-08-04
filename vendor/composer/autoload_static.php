@@ -38,6 +38,10 @@ class ComposerStaticInit48cf0c375bc0c1b8d53d88a7edcdea37
             'Webmozart\\Assert\\' => 17,
             'Wa72\\HtmlPageDom\\' => 17,
         ),
+        'T' => 
+        array (
+            'Tests\\' => 6,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -131,6 +135,7 @@ class ComposerStaticInit48cf0c375bc0c1b8d53d88a7edcdea37
         'A' => 
         array (
             'App\\Docsets\\' => 12,
+            'App\\' => 4,
         ),
     );
 
@@ -156,6 +161,10 @@ class ComposerStaticInit48cf0c375bc0c1b8d53d88a7edcdea37
         'Wa72\\HtmlPageDom\\' => 
         array (
             0 => __DIR__ . '/..' . '/wa72/htmlpagedom/src',
+        ),
+        'Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -376,6 +385,10 @@ class ComposerStaticInit48cf0c375bc0c1b8d53d88a7edcdea37
         'App\\Docsets\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/Docsets',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 

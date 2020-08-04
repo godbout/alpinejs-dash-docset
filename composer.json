@@ -3,8 +3,22 @@
         "php": ">=7.3",
         "godbout/dash-docset-builder": "^1.0"
     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.2",
         "codedungeon/phpunit-result-printer": "^0.28.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --color=always",
+        "format": "php-cs-fixer fix -vvv --config=.php_cs.dist --ansi"
     }
 }
