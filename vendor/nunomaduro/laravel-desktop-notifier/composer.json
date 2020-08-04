@@ -1,0 +1,47 @@
+{
+    "name": "nunomaduro/laravel-desktop-notifier",
+    "description": "Send notifications to your desktop from your Laravel commands. An JoliNotif wrapper for Laravel 5.",
+    "keywords": ["laravel", "framework", "console", "artisan", "php", "wrapper", "JoliNotif", "notification", "notifier", "Nuno Maduro", "NunoMaduro"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/support": "5.6.*|5.7.*|5.8.*|^6.0|^7.0",
+        "illuminate/console": "5.6.*|5.7.*|5.8.*|^6.0|^7.0",
+        "jolicode/jolinotif": "^2.0"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "dev-master",
+        "phpunit/phpunit": "^7.0"
+    },
+    "authors": [
+        {
+            "name": "Nuno Maduro",
+            "email": "enunomaduro@gmail.com"
+        }
+    ],
+    "autoload": {
+         "psr-4": {
+            "NunoMaduro\\LaravelDesktopNotifier\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NunoMaduro\\Tests\\LaravelDesktopNotifier\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NunoMaduro\\LaravelDesktopNotifier\\LaravelDesktopNotifierServiceProvider"
+            ],
+            "aliases": {
+                "Notifier": "NunoMaduro\\LaravelDesktopNotifier\\Facaces\\Notifier"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

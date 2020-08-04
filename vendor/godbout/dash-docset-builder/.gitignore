@@ -1,0 +1,15 @@
+/vendor
+/.idea
+/.vscode
+/.vagrant
+
+app/Docsets/Alfred4.php
+
+.DS_Store
+/database/database.sqlite
+
+/build
+
+/storage
+
+.phpunit.result.cache
