@@ -9,7 +9,7 @@
     <key>DocSetPlatformFamily</key>
     <string>alpinejs</string>
     <key>dashIndexFilePath</key>
-    <string>github.com/alpinejs/alpine</string>
+    <string>github.com/alpinejs/alpine.html</string>
     <key>DashDocSetFallbackURL</key>
     <string>https://</string>
     <key>DashDocSetPlayURL</key>
