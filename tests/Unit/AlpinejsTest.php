@@ -7,7 +7,7 @@ use Godbout\DashDocsetBuilder\Services\DocsetBuilder;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-class ChartjsTest extends TestCase
+class AlpinejsTest extends TestCase
 {
     public function setUp(): void
     {
@@ -30,6 +30,16 @@ class ChartjsTest extends TestCase
     /** @test */
     public function it_can_format_the_documentation_files()
     {
-        $this->markTestIncomplete();
+        $gitHubNavbar = 'js-header-wrapper';
+
+        $this->assertStringContainsString(
+            $gitHubNavbar,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $gitHubNavbar,
+            $this->docset->format($this->docset->downloadedIndex())
+        );
     }
 }
