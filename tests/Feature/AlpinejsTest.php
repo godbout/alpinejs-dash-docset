@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
-use Wa72\HtmlPageDom\HtmlPageCrawler;
 
 class AlpinejsTest extends TestCase
 {
@@ -40,5 +39,126 @@ class AlpinejsTest extends TestCase
         );
 
         $this->assertNotEquals(0, DB::table('searchIndex')->count());
+    }
+
+    /** @test */
+    public function the_GitHub_navbar_gets_removed_from_the_dash_docset_files()
+    {
+        $gitHubNavbar = 'js-header-wrapper';
+
+        $this->assertStringContainsString(
+            $gitHubNavbar,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $gitHubNavbar,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_repository_navigation_gets_removed_from_the_dash_docset_files()
+    {
+        $repositoryNavitation = 'bg-gray-light pt-3 hide-full-screen mb-5';
+
+        $this->assertStringContainsString(
+            $repositoryNavitation,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $repositoryNavitation,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_signup_prompt_gets_removed_from_the_dash_docset_files()
+    {
+        $signupPrompt = 'signup-prompt';
+
+        $this->assertStringContainsString(
+            $signupPrompt,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $signupPrompt,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_file_navigation_gets_removed_from_the_dash_docset_files()
+    {
+        $fileNavigation = 'file-navigation';
+
+        $this->assertStringContainsString(
+            $fileNavigation,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $fileNavigation,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_repository_details_gets_removed_from_the_dash_docset_files()
+    {
+        $repositoryDetails = 'Box mb-3';
+
+        $this->assertStringContainsString(
+            $repositoryDetails,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $repositoryDetails,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+   /** @test */
+    public function the_right_sidebar_gets_removed_from_the_dash_docset_files()
+    {
+        $rightSidebar = 'flex-shrink-0 col-12 col-md-3';
+
+        $this->assertStringContainsString(
+            $rightSidebar,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $rightSidebar,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_weird_box_header_gets_removed_from_the_dash_docset_files()
+    {
+        $weirdBoxHeader = 'Box-header';
+
+        $this->assertStringContainsString(
+            $weirdBoxHeader,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $weirdBoxHeader,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function it_inserts_dash_anchors_in_the_doc_files()
+    {
+        $this->assertStringContainsString(
+            'name="//apple_ref/',
+            Storage::get($this->docset->innerIndex())
+        );
     }
 }
