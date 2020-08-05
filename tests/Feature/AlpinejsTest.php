@@ -121,7 +121,7 @@ class AlpinejsTest extends TestCase
         );
     }
 
-   /** @test */
+    /** @test */
     public function the_right_sidebar_gets_removed_from_the_dash_docset_files()
     {
         $rightSidebar = 'flex-shrink-0 col-12 col-md-3';
