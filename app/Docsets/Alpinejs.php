@@ -13,7 +13,7 @@ class Alpinejs extends BaseDocset
     public const NAME = 'AlpineJS';
     public const URL = 'github.com';
     public const INDEX = 'alpinejs/alpine.html';
-    public const PLAYGROUND = '';
+    public const PLAYGROUND = 'https://alpinejs.codewithhugo.com/?type=components';
     public const ICON_16 = '../../icons/icon.png';
     public const ICON_32 = '../../icons/icon@2x.png';
     public const EXTERNAL_DOMAINS = [
