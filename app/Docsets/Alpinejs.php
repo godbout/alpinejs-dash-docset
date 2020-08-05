@@ -5,6 +5,7 @@ namespace App\Docsets;
 use Godbout\DashDocsetBuilder\Docsets\BaseDocset;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Wa72\HtmlPageDom\HtmlPageCrawler;
 
 class Alpinejs extends BaseDocset
@@ -121,6 +122,8 @@ class Alpinejs extends BaseDocset
 
         $this->removeCrossOriginAndIntegrity($crawler);
 
+        $this->insertDashTableOfContents($crawler);
+
         return $crawler->saveHTML();
     }
 
@@ -174,5 +177,21 @@ class Alpinejs extends BaseDocset
         $crawler->filter('script, link')
             ->removeAttribute('integrity')
             ->removeAttribute('crossorigin');
+    }
+
+    protected function insertDashTableOfContents(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('head')
+            ->before('<a name="//apple_ref/cpp/Section/Top" class="dashAnchor"></a>');
+
+        $crawler->filter('h3')->each(function (HtmlPageCrawler $node) {
+            $node->prepend(
+                '<a id="'
+                . Str::slug($node->text())
+                . '" name="//apple_ref/cpp/Section/'
+                . rawurlencode($node->text())
+                . '" class="dashAnchor"></a>'
+            );
+        });
     }
 }
