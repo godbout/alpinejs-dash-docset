@@ -17,6 +17,8 @@ class Alpinejs extends BaseDocset
     public const ICON_16 = '../../icons/icon.png';
     public const ICON_32 = '../../icons/icon@2x.png';
     public const EXTERNAL_DOMAINS = [
+        'githubassets.com',
+        'githubusercontent.com',
     ];
 
 
@@ -28,6 +30,7 @@ class Alpinejs extends BaseDocset
         ]);
 
         $toGet = implode('|', [
+            '.*\.githubassets\.com',
             '.*\.githubusercontent\.com',
            '\.css',
             '\.ico',
