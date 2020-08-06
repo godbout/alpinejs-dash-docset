@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
+use Wa72\HtmlPageDom\HtmlPageCrawler;
 
 class AlpinejsTest extends TestCase
 {
@@ -149,6 +150,38 @@ class AlpinejsTest extends TestCase
 
         $this->assertStringNotContainsString(
             $weirdBoxHeader,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_content_border_gets_removed_from_the_dash_docset_files()
+    {
+        $contentBorderAddedClass = 'border-0 !important';
+
+        $this->assertStringNotContainsString(
+            $contentBorderAddedClass,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringContainsString(
+            $contentBorderAddedClass,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
+    public function the_footer_gets_removed_from_the_dash_docset_files()
+    {
+        $footer = 'footer';
+
+        $this->assertStringContainsString(
+            $footer,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $footer,
             Storage::get($this->docset->innerIndex())
         );
     }
