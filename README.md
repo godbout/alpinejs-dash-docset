@@ -14,5 +14,5 @@ ___
 
 <br>
 <p align="center">
-    En cours de building...
+    <img src="https://github.com/godbout/alpinejs-dash-docset/blob/media/alpinejs-dash-docset.gif" alt="Alpine.js for Dash">
 </p>
