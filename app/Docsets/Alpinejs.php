@@ -11,7 +11,7 @@ use Wa72\HtmlPageDom\HtmlPageCrawler;
 class Alpinejs extends BaseDocset
 {
     public const CODE = 'alpinejs';
-    public const NAME = 'AlpineJS';
+    public const NAME = 'Alpine.js';
     public const URL = 'github.com';
     public const INDEX = 'alpinejs/alpine.html';
     public const PLAYGROUND = 'https://alpinejs.codewithhugo.com/?type=components';
