@@ -122,7 +122,7 @@ class Alpinejs extends BaseDocset
 
         $this->removeCrossOriginAndIntegrity($crawler);
 
-        $this->insertOnlineRedirection($crawler, $file);
+        $this->insertOnlineRedirection($crawler);
         $this->insertDashTableOfContents($crawler);
 
         return $crawler->saveHTML();
@@ -180,7 +180,7 @@ class Alpinejs extends BaseDocset
             ->removeAttribute('crossorigin');
     }
 
-    protected function insertOnlineRedirection(HtmlPageCrawler $crawler, string $file)
+    protected function insertOnlineRedirection(HtmlPageCrawler $crawler)
     {
         $crawler->filter('html')->prepend("<!-- Online page at https://github.com/alpinejs/alpine -->");
     }
