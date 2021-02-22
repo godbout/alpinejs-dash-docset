@@ -19,33 +19,19 @@ class Alpinejs extends BaseDocset
     public const ICON_32 = '../../icons/icon@2x.png';
     public const EXTERNAL_DOMAINS = [
         'githubassets.com',
-        'githubusercontent.com',
     ];
 
 
     public function grab(): bool
     {
-        $toIgnore = implode('|', [
-            '/blame',
-            '/blob',
-        ]);
-
         $toGet = implode('|', [
-            '.*\.githubassets\.com',
-            '.*\.githubusercontent\.com',
-           '\.css',
-            '\.ico',
-            '\.js',
-            '\.png',
-            '\.svg',
-            '/css',
+            'github\.githubassets\.com/assets/',
         ]);
 
         system(
             "echo; wget github.com/alpinejs/alpine \
                 --mirror \
                 --trust-server-names \
-                --reject-regex='{$toIgnore}' \
                 --accept-regex='{$toGet}' \
                 --ignore-case \
                 --page-requisites \
