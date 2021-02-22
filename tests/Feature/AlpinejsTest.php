@@ -75,22 +75,6 @@ class AlpinejsTest extends TestCase
     }
 
     /** @test */
-    public function the_signup_prompt_gets_removed_from_the_dash_docset_files()
-    {
-        $signupPrompt = 'signup-prompt';
-
-        $this->assertStringContainsString(
-            $signupPrompt,
-            Storage::get($this->docset->downloadedIndex())
-        );
-
-        $this->assertStringNotContainsString(
-            $signupPrompt,
-            Storage::get($this->docset->innerIndex())
-        );
-    }
-
-    /** @test */
     public function the_file_navigation_gets_removed_from_the_dash_docset_files()
     {
         $fileNavigation = 'file-navigation';
