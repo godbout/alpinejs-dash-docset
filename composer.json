@@ -1,7 +1,7 @@
 {
     "require": {
-        "php": ">=7.3",
-        "godbout/dash-docset-builder": "^1.0"
+        "php": "^7.4 || ^8.0",
+        "godbout/dash-docset-builder": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -9,8 +9,9 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.2",
-        "codedungeon/phpunit-result-printer": "^0.28.0"
+        "codedungeon/phpunit-result-printer": "^0.30.1",
+        "phpunit/phpunit": "^9.5",
+        "scrutinizer/ocular": "^1.8"
     },
     "autoload-dev": {
         "psr-4": {
