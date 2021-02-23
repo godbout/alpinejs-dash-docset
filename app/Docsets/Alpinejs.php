@@ -103,6 +103,7 @@ class Alpinejs extends BaseDocset
         $this->removeRightSidebar($crawler);
         $this->removeWeirdBoxHeader($crawler);
         $this->removeContentBorder($crawler);
+        $this->removeVersionSpecificBadges($crawler);
 
         $this->removeFooter($crawler);
 
@@ -152,6 +153,12 @@ class Alpinejs extends BaseDocset
     protected function removeContentBorder(HtmlPageCrawler $crawler)
     {
         $crawler->filter('#readme')->addClass('border-0 !important');
+    }
+
+    protected function removeVersionSpecificBadges(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('[alt="npm bundle size"]')->remove();
+        $crawler->filter('[alt="npm version"]')->remove();
     }
 
     protected function removeFooter(HtmlPageCrawler $crawler)

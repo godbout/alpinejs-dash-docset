@@ -155,6 +155,35 @@ class AlpinejsTest extends TestCase
     }
 
     /** @test */
+    public function the_various_verion_specific_badges_get_removed_from_the_dash_docset_files_()
+    {
+        $versionBadge = 'alt="npm version"';
+
+        $this->assertStringContainsString(
+            $versionBadge,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $versionBadge,
+            Storage::get($this->docset->innerIndex())
+        );
+
+
+        $sizeBadge = 'alt="npm bundle size"';
+
+        $this->assertStringContainsString(
+            $sizeBadge,
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertStringNotContainsString(
+            $sizeBadge,
+            Storage::get($this->docset->innerIndex())
+        );
+    }
+
+    /** @test */
     public function the_footer_gets_removed_from_the_dash_docset_files()
     {
         $footer = 'footer';
