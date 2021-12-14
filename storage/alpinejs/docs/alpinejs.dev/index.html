@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/app.css%3Fid=8f234a1ce84613005d1d.css">
+
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/trap@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/collapse@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/morph@3.7.0/dist/cdn.min.js"></script>
+    <!-- <script defer src="http://alpine.test/packages/alpinejs/dist/cdn.min.js"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Social Media -->
+    <meta name="twitter:card" content="summary_large_image">
+            <meta name="og:title" content="Alpine.js">
+                <meta name="og:description" content="A rugged, minimal framework for composing behavior directly in your markup.">
+    <meta name="og:image" content="https://alpinejs.dev/social.jpg">
+
+            <title>Alpine.js</title>
+    
+    <meta name="description" content="A rugged, minimal framework for composing behavior directly in your markup.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
+
+    <style>
+         h1, h2, h3, h4, .font-title { font-family: 'Karla', system-ui, -apple-system, /* Firefox supports this but not yet `system-ui` */ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+        code { font-family: MonoLisa, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace }
+        html { scroll-behavior: smooth;  }
+        .text-brand { color: hsl(193 42% 49% / 1); }
+        ::selection { background-color: #c9f3fd; }
+    </style>
+
+            <!-- Fathom - beautiful, simple website analytics -->
+        <script src="https://fancyrat.calebporzio.com/script.js" data-site="AROBLZOR" defer></script>
+    </head>
+<body>
+    <nav class="absolute w-full px-6 py-4 flex justify-end text-xl font-medium text-brand-dark">
+        <a href="start-here.html">→ Docs</a>
+    </nav>
+
+    <div class="m-auto md:w-[650px] flex flex-col items-center py-32 text-center px-8 text-brand-dark">
+        <img src="alpine_long.svg" alt="">
+        <h2 class="text-2xl pt-6 font-title">Your new, lightweight, JavaScript framework.</h2>
+    </div>
+
+    <div class="m-auto px-4 md:px-0 md:w-[775px] text-brand-dark">
+        <div class="rounded-xl bg-white border-4 border-brand-dark relative md:text-xl">
+            <div class="overflow-x-auto md:overflow-hidden px-8 py-6 space-y-2 flex flex-col">
+                <!-- <code class="whitespace-pre">&lt;html&gt;</code> -->
+                <code class="whitespace-pre">&lt;script src=&quot;//unpkg.com/alpinejs&quot; defer&gt;&lt;/script&gt;</code>
+                <code class="whitespace-pre">&nbsp;</code>
+                <code class="whitespace-pre"></code>
+                <code class="whitespace-pre">&lt;div x-data=&quot;{ open: false }&quot;&gt;</code>
+                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;&lt;button @click=&quot;open = true&quot;&gt;Expand&lt;/button&gt;</code>
+                <code class="whitespace-pre">&nbsp;</code>
+                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;&lt;span x-show=&quot;open&quot;&gt;</code>
+                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Content...</code>
+                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</code>
+                <code class="whitespace-pre">&lt;/div&gt;</code>
+                <!-- <code class="whitespace-pre">&lt;/html&gt;</code> -->
+            </div>
+
+            <div class="absolute inset-0 flex items-center" style="z-index: -1; margin: 0">
+                <div class="rounded-xl w-full h-full -mr-16 left-6 border-4 border-brand-dark transform scale-y-95 translate-x-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        x-data="{
+            currentStep: 'directives',
+            steps: { directives: [15, 'Attributes'], magics: [6, 'Properties'], methods: [2, 'Methods'] },
+            direction: 'right' }
+        "
+        x-init="$watch('currentStep', (value, old) => {
+            let keys = Object.keys(steps)
+
+            direction = keys.indexOf(value) > keys.indexOf(old) ? 'right' : 'left'
+        })"
+    >
+        <div class="m-auto px-8 md:w-[650px] pt-32 text-brand-dark">
+            <div class="space-y-2 font-title">
+                <h2 class="font-extrabold text-6xl">Simple.</h2>
+                <h2 class="font-extrabold text-6xl">Lightweight.</h2>
+                <h2 class="font-extrabold text-6xl">Powerful as hell.</h2>
+            </div>
+
+            <div class="pt-16 space-y-6 text-xl">
+                <p>
+                    Alpine is a rugged, minimal tool for composing behavior directly in your markup.
+                    Think of it like jQuery for the modern web. Plop in a script tag and get going.
+                </p>
+                <p>
+                    Alpine is a collection of <strong>15 attributes</strong>, <strong>6 properties</strong>, and <strong>2 methods</strong>.
+                </p>
+                <p>
+                    There is no better way to get a feel for what Alpine is and what it can do, than by seeing it for yourself:
+                </p>
+            </div>
+
+            <div class="flex justify-center space-x-2 pt-16">
+                <template x-for="([number, name], key) in steps" hidden>
+                    <button
+                        class="px-3 py-1 rounded-xl focus:outline-none focus:ring-1 ring-brand-dark"
+                        :class="currentStep === key && 'bg-brand-dark text-white'"
+                        @click="currentStep = key"
+                    >
+                        <strong x-text="number"></strong>
+                        <span x-text="name"></span>
+                    </button>
+                </template>
+            </div>
+        </div>
+
+
+        <div class="m-auto px-8 md:overflow-hidden relative text-brand-dark"
+            x-data="{ expanded: true }"
+            x-bind:class="expanded || 'h-[450px]'"
+        >
+            <div x-show="! expanded" class="absolute bottom-0 left-0 right-0 z-10">
+                <div class="bg-gradient-to-t from-white to-transparent h-[150px]"></div>
+                <div class="flex justify-center items-end bg-white py-12">
+                    <button @click="expanded = true">Show More ↓</button>
+                </div>
+            </div>
+
+            <div class="m-auto md:w-[750px] lg:w-[1000px] pt-12 md:px-0 pb-16 md:pb-0">
+                <div x-show="currentStep === 'directives'"
+                    x-bind="direction === 'right' ? {
+                        'x-transition:enter': 'transition ease-out',
+                        'x-transition:enter-start': 'transform translate-x-64 opacity-0 ',
+                        'x-transition:enter-end': 'transform translate-x-0 opacity-100',
+                    } : {
+                        'x-transition:enter': 'transition ease-out',
+                        'x-transition:enter-start': 'transform -translate-x-64 opacity-0',
+                        'x-transition:enter-end': 'transform translate-x-0 opacity-100',
+                    }"
+                >
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-data</span>
+                            <p>Declare a new Alpine component and its data for a block of HTML</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-b-4 md:border-b-0 rounded-b-xl md:rounded-b-none border-l-4 border-r-4 border-t-4 rounded-t-xl border-brand-dark">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="block whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-data</span>=&quot;{ open: false }&quot;&gt;</code>
+                                <code class="block whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;...</code>
+                                <code class="block whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden rounded-t-xl absolute h-full left-3 border-t-4 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-bind</span>
+                            <p>Dynamically set HTML attributes on an element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-bind</span>:class=&quot;! open ? 'hidden' : ''&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-on</span>
+                            <p>Listen for browser events on an element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;button <span class="text-[#48a9c1]">x-on</span>:click=&quot;open = ! open&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;Toggle</code>
+                                <code class="whitespace-pre">&lt;/button&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-text</span>
+                            <p>Set the text content of an element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div&gt;</code>
+                                <code class="block whitespace-pre">&nbsp;&nbsp;Copyright ©</code>
+                                <code class="block whitespace-pre">&nbsp;</code>
+                                <code class="block whitespace-pre">&nbsp;&nbsp;&lt;span <span class="text-[#48a9c1]">x-text</span>=&quot;new Date().getFullYear()&quot;&gt;&lt;/span&gt;</code>
+                                <code class="block whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-html</span>
+                            <p>Set the inner HTML of an element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-html</span>=&quot;(await axios.get('/some/html/partial')).data&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="block whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-model</span>
+                            <p>Synchronize a piece of data with an input element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div x-data=&quot;{ search: '' }&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&lt;input type=&quot;text&quot; <span class="text-[#48a9c1]">x-model</span>=&quot;search&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;Searching for: &lt;span x-text=&quot;search&quot;&gt;&lt;/span&gt;</code>
+                                <code class="block whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-show</span>
+                            <p>Toggle the visibility of an element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-show</span>=&quot;open&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-transition</span>
+                            <p>Transition an element in and out using CSS transitions</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div x-show=&quot;open&quot; <span class="text-[#48a9c1]">x-transition</span>&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="hidden md:block absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-for</span>
+                            <p>Repeat a block of HTML based on a data set</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;template <span class="text-[#48a9c1]">x-for</span>=&quot;post in posts&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&lt;h2 x-text=&quot;post.title&quot;&gt;&lt;/h2&gt;</code>
+                                <code class="whitespace-pre">&lt;/template&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-if</span>
+                            <p>Conditionally add/remove a block of HTML from the page entirely.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;template <span class="text-[#48a9c1]">x-if</span>=&quot;open&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&lt;div&gt;...&lt;/div&gt;</code>
+                                <code class="whitespace-pre">&lt;/template&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-init</span>
+                            <p>Run code when an element is initialized by Alpine</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-init</span>=&quot;date = new Date()&quot;&gt;&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-effect</span>
+                            <p>Execute a script each time one of its dependancies change</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-effect</span>=&quot;console.log('Count is '+count)&quot;&gt;&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-ref</span>
+                            <p>Reference elements directly by their specified keys using the <code>$refs</code> magic property</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre block">&lt;input type=&quot;text&quot; <span class="text-[#48a9c1]">x-ref</span>=&quot;content&quot;&gt;</code>
+                                <code class="whitespace-pre block">&nbsp;</code>
+                                <code class="whitespace-pre block">&lt;button x-on:click=&quot;navigator.clipboard.writeText($refs.content.value)&quot;&gt;</code>
+                                <code class="whitespace-pre block">&nbsp;&nbsp;Copy</code>
+                                <code class="whitespace-pre block">&lt;/button&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-cloak</span>
+                            <p>Hide a block of HTML until after Alpine is finished initializing its contents</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-cloak</span>&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">x-ignore</span>
+                            <p>Prevent a block of HTML from being initialized by Alpine</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0 md:pb-16">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div <span class="text-[#48a9c1]">x-ignore</span>&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="currentStep === 'magics'"
+                    x-bind="direction === 'right' ? {
+                        'x-transition:enter': 'transition ease-out',
+                        'x-transition:enter-start': 'transform translate-x-64 opacity-0 ',
+                        'x-transition:enter-end': 'transform translate-x-0 opacity-100',
+                    } : {
+                        'x-transition:enter': 'transition ease-out',
+                        'x-transition:enter-start': 'transform -translate-x-64 opacity-0',
+                        'x-transition:enter-end': 'transform translate-x-0 opacity-100',
+                    }"
+                >
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">$store</span>
+                            <p>Access a global store registered using <code>Alpine.store(...)</code></p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-b-4 md:border-b-0 rounded-b-xl md:rounded-b-none border-l-4 border-r-4 border-t-4 rounded-t-xl border-brand-dark">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;h1 x-text=&quot;<span class="text-[#48a9c1]">$store</span>.site.title&quot;&gt;&lt;/h1&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden rounded-t-xl absolute h-full left-3 border-t-4 border-r-4 border-brand-dark box-content top-3 w-full " style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">$el</span>
+                            <p>Reference the current DOM element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div x-init=&quot;new Pikaday(<span class="text-[#48a9c1]">$el</span>)&quot;&gt;&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">$dispatch</span>
+                            <p>Dispatch a custom browser event from the current element</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div x-on:notify=&quot;...&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&lt;button x-on:click=&quot;<span class="text-[#48a9c1]">$dispatch</span>('notify')&quot;&gt;...&lt;/button&gt;</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">$watch</span>
+                            <p>Watch a piece of data and run the provided callback anytime it changes</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div x-init=&quot;<span class="text-[#48a9c1]">$watch</span>('count', value =&gt; {</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;console.log('count is ' + value))&quot;</code>
+                                <code class="whitespace-pre">}&quot;&gt;...&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">$refs</span>
+                            <p>Reference an element by key (specified using <code>x-ref</code>)</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div x-init=&quot;<span class="text-[#48a9c1]">$refs</span>.button.remove()&quot;&gt;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&lt;button x-ref=&quot;button&quot;&gt;Remove Me&lt;/button&gt;</code>
+                                <code class="whitespace-pre">&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">$nextTick</span>
+                            <p>Wait until the next "tick" (browser paint) to run a bit of code</p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="whitespace-pre">&lt;div</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;x-text=&quot;count&quot;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;x-text=&quot;<span class="text-[#48a9c1]">$nextTick</span>(() =&gt; {&quot;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;console.log('count is ' + $el.textContent)</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;})</code>
+                                <code class="whitespace-pre">&gt;...&lt;/div&gt;</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="currentStep === 'methods'"
+                    x-bind="direction === 'right' ? {
+                        'x-transition:enter': 'transition ease-out',
+                        'x-transition:enter-start': 'transform translate-x-64 opacity-0 ',
+                        'x-transition:enter-end': 'transform translate-x-0 opacity-100',
+                    } : {
+                        'x-transition:enter': 'transition ease-out',
+                        'x-transition:enter-start': 'transform -translate-x-64 opacity-0',
+                        'x-transition:enter-end': 'transform translate-x-0 opacity-100',
+                    }"
+                >
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">Alpine.data</span>
+                            <p>Reuse a data object and reference it using <code>x-data</code></p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-b-4 md:border-b-0 rounded-b-xl md:rounded-b-none border-l-4 border-r-4 border-t-4 rounded-t-xl border-brand-dark">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="block whitespace-pre">&lt;div x-data=&quot;dropdown&quot;&gt;</code>
+                                <code class="block whitespace-pre">&nbsp;&nbsp;...</code>
+                                <code class="block whitespace-pre">&lt;/div&gt;</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="block whitespace-pre">...</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="whitespace-pre"><span class="text-[#48a9c1]">Alpine.data</span>('dropdown', () =&gt; ({</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;open: false,</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;toggle() { </code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;this.open = ! this.open</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;}</code>
+                                <code class="whitespace-pre">}))</code>
+                            </div>
+
+                            <div class="md:block hidden rounded-t-xl absolute h-full left-3 border-t-4 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-[30%] pt-8 pb-4 md:pb-8">
+                            <span class="text-2xl font-bold">Alpine.store</span>
+                            <p>Declare a piece of global, reactive, data that can be accessed from anywhere using <code>$store</code></p>
+                        </div>
+                        <div class="hidden md:block md:w-[10%]"></div>
+                        <div class="relative bg-white md:w-[60%] border-l-4 border-r-4 border-brand-dark rounded-b-xl md:rounded-b-none rounded-t-xl md:rounded-t-none border-b-4 md:border-b-0 border-t-4 md:border-t-0">
+                            <div class="py-8 px-4 overflow-x-hidden hover:overflow-x-auto h-full flex flex-col justify-center">
+                                <code class="block whitespace-pre">&lt;button @click=&quot;$store.notifications.notify('...')&quot;&gt;</code>
+                                <code class="block whitespace-pre">&nbsp;&nbsp;Notify</code>
+                                <code class="block whitespace-pre">&lt;/button&gt;</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="block whitespace-pre">...</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="whitespace-pre"><span class="text-[#48a9c1]">Alpine.store</span>('notifications', {</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;items: [],</code>
+                                <code class="whitespace-pre">&nbsp;</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;notify(message) { </code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;&nbsp;&nbsp;this.items.push(message)</code>
+                                <code class="whitespace-pre">&nbsp;&nbsp;}</code>
+                                <code class="whitespace-pre">})</code>
+                            </div>
+
+                            <div class="md:block hidden absolute h-full left-3 border-r-4 border-brand-dark box-content top-3 w-full" style="z-index: -1; margin: 0"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-brand-dark text-white" style=" background-image: url(repeat.svg); background-size: 297px ">
+        <div class="m-auto px-8 md:w-[750px] flex flex-col items-center py-24 space-y-4">
+            <p class="text-2xl  leading-relaxed font-title">
+                I hope you find Alpine to be a breath of fresh air. Silence among noise.
+                <br>
+                <br>
+                - <a href="https://twitter.com/calebporzio" class="underline">Caleb</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

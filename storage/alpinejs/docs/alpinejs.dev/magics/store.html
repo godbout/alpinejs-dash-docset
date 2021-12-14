@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/app.css%3Fid=8f234a1ce84613005d1d.css">
+
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/trap@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/collapse@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/morph@3.7.0/dist/cdn.min.js"></script>
+    <!-- <script defer src="http://alpine.test/packages/alpinejs/dist/cdn.min.js"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Social Media -->
+    <meta name="twitter:card" content="summary_large_image">
+            <meta name="og:title" content="store — Alpine.js">
+                <meta name="og:description" content="A rugged, minimal framework for composing behavior directly in your markup.">
+    <meta name="og:image" content="https://alpinejs.dev/social.jpg">
+
+            <title>store — Alpine.js</title>
+    
+    <meta name="description" content="A rugged, minimal framework for composing behavior directly in your markup.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.png">
+
+    <style>
+         h1, h2, h3, h4, .font-title { font-family: 'Karla', system-ui, -apple-system, /* Firefox supports this but not yet `system-ui` */ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+        code { font-family: MonoLisa, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace }
+        html { scroll-behavior: smooth;  }
+        .text-brand { color: hsl(193 42% 49% / 1); }
+        ::selection { background-color: #c9f3fd; }
+    </style>
+
+            <!-- Fathom - beautiful, simple website analytics -->
+        <script src="https://fancyrat.calebporzio.com/script.js" data-site="AROBLZOR" defer></script>
+    </head>
+<body>
+    <header style="height: 4rem" class="bg-white fixed flex items-center justify-between left-0 right-0 top-0 z-10">
+        <div class="text-2xl font-semibold md:w-64 text-gray-800 hover:text-gray-900 pl-6 py-0">
+            <a href="../index.html" class="flex items-center">
+                <img src="../alpine_long.svg" class="w-[290px]" alt="">
+            </a>
+        </div>
+
+        <div class="space-x-6 text-brand-dark hidden md:flex justify-end items-center w-64 pr-6 py-4">
+            <a href="https://github.com/alpinejs/alpine" class="block hover:text-gray-600"><svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>GitHub</title><path d="M10 0a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69a3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 10 0"></path></svg></a>
+            <a href="https://twitter.com/Alpine_JS" class="block hover:text-gray-600"><svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Twitter</title><path d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path></svg></a>
+            <a href="https://alpinejs.codewithhugo.com/chat/" class="block hover:text-gray-600"><svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146 146"><title>Discord</title><path d="M107.75 125.001s-4.5-5.375-8.25-10.125c16.375-4.625 22.625-14.875 22.625-14.875-5.125 3.375-10 5.75-14.375 7.375-6.25 2.625-12.25 4.375-18.125 5.375-12 2.25-23 1.625-32.375-.125-7.125-1.375-13.25-3.375-18.375-5.375-2.875-1.125-6-2.5-9.125-4.25-.375-.25-.75-.375-1.125-.625-.25-.125-.375-.25-.5-.375-2.25-1.25-3.5-2.125-3.5-2.125s6 10 21.875 14.75c-3.75 4.75-8.375 10.375-8.375 10.375-27.625-.875-38.125-19-38.125-19 0-40.25 18-72.875 18-72.875 18-13.5 35.125-13.125 35.125-13.125l1.25 1.5c-22.5 6.5-32.875 16.375-32.875 16.375s2.75-1.5 7.375-3.625c13.375-5.875 24-7.5 28.375-7.875.75-.125 1.375-.25 2.125-.25 7.625-1 16.25-1.25 25.25-.25 11.875 1.375 24.625 4.875 37.625 12 0 0-9.875-9.375-31.125-15.875l1.75-2S110 19.626 128 33.126c0 0 18 32.625 18 72.875 0 0-10.625 18.125-38.25 19zM49.625 66.626c-7.125 0-12.75 6.25-12.75 13.875s5.75 13.875 12.75 13.875c7.125 0 12.75-6.25 12.75-13.875.125-7.625-5.625-13.875-12.75-13.875zm45.625 0c-7.125 0-12.75 6.25-12.75 13.875s5.75 13.875 12.75 13.875c7.125 0 12.75-6.25 12.75-13.875s-5.625-13.875-12.75-13.875z" fill-rule="nonzero"></path></svg></a>
+        </div>
+
+        <div class="md:hidden flex items-center pr-6" x-data="{ show: false }">
+            <button class="text-gray-600 focus:outline-none" x-on:click="show = ! show">
+                <svg x-show="! show" class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
+                <svg x-show="show" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+            </button>
+
+            <div class="bg-gray-100 bottom-0 fixed p-6 right-0 shadow-xl w-1/2 overflow-y-auto" style="top: 4rem" x-show="show"
+                x-transition:enter="transition ease-in-out duration-300 transform"
+                x-transition:enter-start="translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in-out duration-300 transform"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-full">
+                <ul class="space-y-2 text-gray-800">
+                                                                        <li  class="font-medium" ><a href="../start-here.html" class="hover:text-gray-900">Start Here</a></li>
+                                                                                                <li  class="font-medium" ><a href="../upgrade-guide.html" class="hover:text-gray-900">Upgrade From V2</a></li>
+                                                                                                <li>
+                                <span class="font-medium">Essentials</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="../essentials/installation.html" class="hover:text-gray-900">Installation</a></li>
+                                                                        <li   class=""  ><a href="../essentials/state.html" class="hover:text-gray-900">State</a></li>
+                                                                        <li   class=""  ><a href="../essentials/templating.html" class="hover:text-gray-900">Templating</a></li>
+                                                                        <li   class=""  ><a href="../essentials/events.html" class="hover:text-gray-900">Events</a></li>
+                                                                        <li   class=""  ><a href="../essentials/lifecycle.html" class="hover:text-gray-900">Lifecycle</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Directives</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="../directives/data.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>data</a></li>
+                                                                        <li   class=""  ><a href="../directives/init.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>init</a></li>
+                                                                        <li   class=""  ><a href="../directives/show.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>show</a></li>
+                                                                        <li   class=""  ><a href="../directives/bind.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>bind</a></li>
+                                                                        <li   class=""  ><a href="../directives/on.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>on</a></li>
+                                                                        <li   class=""  ><a href="../directives/text.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>text</a></li>
+                                                                        <li   class=""  ><a href="../directives/html.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>html</a></li>
+                                                                        <li   class=""  ><a href="../directives/model.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>model</a></li>
+                                                                        <li   class=""  ><a href="../directives/for.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>for</a></li>
+                                                                        <li   class=""  ><a href="../directives/transition.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>transition</a></li>
+                                                                        <li   class=""  ><a href="../directives/effect.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>effect</a></li>
+                                                                        <li   class=""  ><a href="../directives/ignore.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ignore</a></li>
+                                                                        <li   class=""  ><a href="../directives/ref.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ref</a></li>
+                                                                        <li   class=""  ><a href="../directives/cloak.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>cloak</a></li>
+                                                                        <li   class=""  ><a href="../directives/teleport.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>teleport</a></li>
+                                                                        <li   class=""  ><a href="../directives/if.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>if</a></li>
+                                                                        <li   class=""  ><a href="../directives/id.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>id</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Magics</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="el.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>el</a></li>
+                                                                        <li   class=""  ><a href="refs.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>refs</a></li>
+                                                                        <li   class=""  ><a href="store.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>store</a></li>
+                                                                        <li   class=""  ><a href="watch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>watch</a></li>
+                                                                        <li   class=""  ><a href="dispatch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>dispatch</a></li>
+                                                                        <li   class=""  ><a href="nextTick.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>nextTick</a></li>
+                                                                        <li   class=""  ><a href="root.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>root</a></li>
+                                                                        <li   class=""  ><a href="data.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>data</a></li>
+                                                                        <li   class=""  ><a href="id.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>id</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Globals</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="../globals/alpine-data.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>data()</a></li>
+                                                                        <li   class=""  ><a href="../globals/alpine-store.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>store()</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Plugins</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="../plugins/intersect.html" class="hover:text-gray-900">Intersect</a></li>
+                                                                        <li   class=""  ><a href="../plugins/persist.html" class="hover:text-gray-900">Persist</a></li>
+                                                                        <li   class=""  ><a href="../plugins/trap.html" class="hover:text-gray-900">Trap</a></li>
+                                                                        <li   class=""  ><a href="../plugins/collapse.html" class="hover:text-gray-900">Collapse</a></li>
+                                                                        <li   class=""  ><a href="../plugins/morph.html" class="hover:text-gray-900">Morph</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Advanced</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="../advanced/reactivity.html" class="hover:text-gray-900">Reactivity</a></li>
+                                                                        <li   class=""  ><a href="../advanced/extending.html" class="hover:text-gray-900">Extending</a></li>
+                                                                        <li   class=""  ><a href="../advanced/async.html" class="hover:text-gray-900">Async</a></li>
+                                                                        <li   class=""  ><a href="../advanced/csp.html" class="hover:text-gray-900">CSP</a></li>
+                                                                    </ul>
+                            </li>
+                                                            </ul>
+            </div>
+        </div>
+    </header>
+
+    <style>[hover-scrollbar] { overflow-x: 'visible'; overflow-y: hidden; } [hover-scrollbar]:hover { overflow-y: auto }</style>
+    <aside style="top: 4rem" class="fixed pb-6 pt-8 px-8 left-0 bottom-0 hidden md:block w-48 lg:w-64" hover-scrollbar>
+        <ul class="space-y-2 text-brand-dark">
+                            
+                                    <li  class="font-medium" ><a href="../start-here.html" class="hover:text-gray-900">Start Here</a></li>
+                                                                <li class="font-medium">
+                        <a href="../components.html" class="hover:text-gray-900">
+                            <div class="relative">
+                                Components <span class="hidden lg:inline relative">
+                                    <div class="h-full top-0 left-2 flex items-center absolute">
+                                        <span class="text-xs bg-brand text-white font-bold px-[.45rem] py-[.1rem] rounded-full whitespace-nowrap">Coming soon!</span>
+                                    </div>
+                                </span>
+
+                            </div>
+
+                            <ul class="pl-3 relative">
+                                <div class="absolute inset-0 bg-gradient-to-b from-[#fff2] to-white"></div>
+                                <li>Modal</li>
+                                <li>Dropdown</li>
+                            </ul>
+                        </a>
+                    </li>
+                
+                                    <li  class="font-medium" ><a href="../upgrade-guide.html" class="hover:text-gray-900">Upgrade From V2</a></li>
+                                            
+                                    <li>
+                        <span class="font-medium">Essentials</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="../essentials/installation.html" class="hover:text-gray-900">Installation</a></li>
+                                                        <li   class=""  ><a href="../essentials/state.html" class="hover:text-gray-900">State</a></li>
+                                                        <li   class=""  ><a href="../essentials/templating.html" class="hover:text-gray-900">Templating</a></li>
+                                                        <li   class=""  ><a href="../essentials/events.html" class="hover:text-gray-900">Events</a></li>
+                                                        <li   class=""  ><a href="../essentials/lifecycle.html" class="hover:text-gray-900">Lifecycle</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Directives</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="../directives/data.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>data</a></li>
+                                                        <li   class=""  ><a href="../directives/init.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>init</a></li>
+                                                        <li   class=""  ><a href="../directives/show.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>show</a></li>
+                                                        <li   class=""  ><a href="../directives/bind.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>bind</a></li>
+                                                        <li   class=""  ><a href="../directives/on.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>on</a></li>
+                                                        <li   class=""  ><a href="../directives/text.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>text</a></li>
+                                                        <li   class=""  ><a href="../directives/html.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>html</a></li>
+                                                        <li   class=""  ><a href="../directives/model.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>model</a></li>
+                                                        <li   class=""  ><a href="../directives/for.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>for</a></li>
+                                                        <li   class=""  ><a href="../directives/transition.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>transition</a></li>
+                                                        <li   class=""  ><a href="../directives/effect.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>effect</a></li>
+                                                        <li   class=""  ><a href="../directives/ignore.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ignore</a></li>
+                                                        <li   class=""  ><a href="../directives/ref.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ref</a></li>
+                                                        <li   class=""  ><a href="../directives/cloak.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>cloak</a></li>
+                                                        <li   class=""  ><a href="../directives/teleport.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>teleport</a></li>
+                                                        <li   class=""  ><a href="../directives/if.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>if</a></li>
+                                                        <li   class=""  ><a href="../directives/id.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>id</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Magics</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="el.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>el</a></li>
+                                                        <li   class=""  ><a href="refs.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>refs</a></li>
+                                                        <li   style="margin-left: -2.75rem" class="border-brand border-l-4 pl-10 font-semibold"  ><a href="store.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>store</a></li>
+                                                        <li   class=""  ><a href="watch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>watch</a></li>
+                                                        <li   class=""  ><a href="dispatch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>dispatch</a></li>
+                                                        <li   class=""  ><a href="nextTick.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>nextTick</a></li>
+                                                        <li   class=""  ><a href="root.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>root</a></li>
+                                                        <li   class=""  ><a href="data.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>data</a></li>
+                                                        <li   class=""  ><a href="id.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>id</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Globals</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="../globals/alpine-data.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>data()</a></li>
+                                                        <li   class=""  ><a href="../globals/alpine-store.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>store()</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Plugins</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="../plugins/intersect.html" class="hover:text-gray-900">Intersect</a></li>
+                                                        <li   class=""  ><a href="../plugins/persist.html" class="hover:text-gray-900">Persist</a></li>
+                                                        <li   class=""  ><a href="../plugins/trap.html" class="hover:text-gray-900">Trap</a></li>
+                                                        <li   class=""  ><a href="../plugins/collapse.html" class="hover:text-gray-900">Collapse</a></li>
+                                                        <li   class=""  ><a href="../plugins/morph.html" class="hover:text-gray-900">Morph</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Advanced</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="../advanced/reactivity.html" class="hover:text-gray-900">Reactivity</a></li>
+                                                        <li   class=""  ><a href="../advanced/extending.html" class="hover:text-gray-900">Extending</a></li>
+                                                        <li   class=""  ><a href="../advanced/async.html" class="hover:text-gray-900">Async</a></li>
+                                                        <li   class=""  ><a href="../advanced/csp.html" class="hover:text-gray-900">CSP</a></li>
+                                                    </ul>
+                    </li>
+                                    </ul>
+    </aside>
+
+    <main class="pt-24 pl-0 md:pl-48 lg:pl-64 pr-0 xl:pr-64">
+        <style>
+            .markdown>*+* { margin-top: 1.5rem; }
+            .markdown p { line-height: 1.75; }
+            .markdown h1, .markdown h2, .markdown h3 { color: #2d3342; scroll-margin-top: 4rem; font-weight: 800; letter-spacing: -.025em; }
+            .markdown h1, .markdown h2 { border-bottom-width: 1px; border-color: #edf2f7; }
+            .markdown h1 { font-size: 2.25rem; }
+            .markdown h2 { font-size: 1.5rem; }
+            .markdown h3 { font-size: 1.25rem; }
+            .markdown ul { list-style-type: disc; }
+            .markdown a { color: hsl(192deg 51% 46%); font-weight: 600; }
+            .markdown h1 a, .markdown h2 a, .markdown h3 a { position: relative; color: #2d3342; font-weight: 800; }
+            .markdown h1 a::before, .markdown h2 a::before, .markdown h3 a::before {
+                position: absolute;
+                left: -1.35rem;
+                content: "# ";
+                color: rgba(175, 187, 199);
+                font-weight: 600;
+            }
+            .markdown h1 a:hover::before, .markdown h2 a:hover::before, .markdown h3 a:hover::before {
+                color: #7e8a9e;
+            }
+            .markdown code { white-space: nowrap; padding-top: .1rem; padding-bottom: .1rem; padding-left: .25rem; padding-right: .25rem; font-size: .875rem; font-weight: 600; border-radius: .25rem; background-color: #edf2f7; }
+            pre {
+                overflow-y: auto;
+                background: #f6f7f9;
+                font-size: .875rem;
+                border-radius: .25rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                overflow-x: auto;
+                background: #f6f7f9;
+            }
+            pre code.torchlight {
+                display: block;
+                min-width: -webkit-max-content;
+                min-width: -moz-max-content;
+                min-width: max-content;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                padding-left: 0;
+                padding-right: 0;
+                background-color: #f6f7f9 !important;
+                white-space: pre;
+                font-weight: 400;
+            }
+            pre code.torchlight .line {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            pre code.torchlight .line-number,
+            pre code.torchlight .summary-caret {
+                margin-right: 1rem;
+            }
+            .markdown blockquote { font-size: .95em; color: #2d3748; padding: 1rem; border-left-width: 4px; border-color: rgba(119, 193, 210); background: #f6f7f9; }
+            .markdown table tbody td { border-color: #d8dee9; border-width: 1px; padding: .25rem .5rem }
+            .demo { background: white; padding: 1rem; border-width: 1px; border-radius: .25rem; border-color: #d8dee9; }
+            .demo li { list-style-position: inside; }
+            .demo button { padding: 0 .5rem; border-width: 1px; border-radius: .25rem; border-color: #a0aec0; background-color: #e2e8f0; }
+            .demo button:hover { background-color: #edf2f7; }
+            .demo input, .demo textarea, .demo select { padding: .25rem .5rem; border-width: 1px; border-radius: .25rem; border-color: #cbd5e0; }
+            .demo input[type="checkbox"] { padding: 0; }
+            .demo input[type="radio"] { padding: 0; border-radius: 999px; }
+            .demo select { padding-right: 2.5rem; }
+            /* .demo input[type="radio"] { border-radius: 999px; } */
+        </style>
+        <div class="m-auto max-w-3xl px-6 pb-24 text-gray-800 antialiased markdown" listen-for-intersection-of-titles>
+            <h1>$store</h1>
+<p>You can use <code>$store</code> to conveniently access global Alpine stores registered using <a href="store.html#"><code>Alpine.store(...)</code></a>. For example:</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">$store.darkMode.</span><span style="color: #6F42C1;">toggle</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;Toggle Dark Mode&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">...</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;"> :</span><span style="color: #6F42C1;">class</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">$store.darkMode.on </span><span style="color: #D73A49;">&amp;&amp;</span><span style="color: #24292E;"> </span><span style="color: #032F62;">&#39;bg-black&#39;&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    ...</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    document.</span><span style="color: #6F42C1;">addEventListener</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;alpine:init&#39;</span><span style="color: #24292E;">, () </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">        Alpine.</span><span style="color: #6F42C1;">store</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;darkMode&#39;</span><span style="color: #24292E;">, {</span></div><div class='line'><span style="color: #24292E;">            on: </span><span style="color: #005CC5;">false</span><span style="color: #24292E;">,</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">            </span><span style="color: #6F42C1;">toggle</span><span style="color: #24292E;">() {</span></div><div class='line'><span style="color: #24292E;">                </span><span style="color: #005CC5;">this</span><span style="color: #24292E;">.on </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> </span><span style="color: #D73A49;">!</span><span style="color: #24292E;"> </span><span style="color: #005CC5;">this</span><span style="color: #24292E;">.on</span></div><div class='line'><span style="color: #24292E;">            }</span></div><div class='line'><span style="color: #24292E;">        })</span></div><div class='line'><span style="color: #24292E;">    })</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p>Given that we've registered the <code>darkMode</code> store and set <code>on</code> to &quot;false&quot;, when the <code>&lt;button&gt;</code> is pressed, <code>on</code> will be &quot;true&quot; and the background color of the page will change to black.</p>
+<h2 id="single-value-stores"><a href="store.html#single-value-stores">Single-value stores</a></h2>
+<p>If you don't need an entire object for a store, you can set and use any kind of data as a store.</p>
+<p>Here's the example from above but using it more simply as a boolean value:</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">$store.darkMode </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> </span><span style="color: #D73A49;">!</span><span style="color: #24292E;"> $store.darkMode</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;Toggle Dark Mode&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">...</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;"> :</span><span style="color: #6F42C1;">class</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">$store.darkMode </span><span style="color: #D73A49;">&amp;&amp;</span><span style="color: #24292E;"> </span><span style="color: #032F62;">&#39;bg-black&#39;&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    ...</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    document.</span><span style="color: #6F42C1;">addEventListener</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;alpine:init&#39;</span><span style="color: #24292E;">, () </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">        Alpine.</span><span style="color: #6F42C1;">store</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;darkMode&#39;</span><span style="color: #24292E;">, </span><span style="color: #005CC5;">false</span><span style="color: #24292E;">)</span></div><div class='line'><span style="color: #24292E;">    })</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="../globals/alpine-store.html">→ Read more about Alpine stores</a></p>
+
+            <div class="border-gray-200 border-t flex justify-between pt-4 text-gray-700">
+                <div>
+                                            <a class="text-brand font-bold" href="refs.html">← $refs</a>
+                                    </div>
+
+                <div>
+                                            <a class="text-brand font-bold" href="watch.html">$watch →</a>
+                                    </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-600 text-center">Code highlighting provided by <a href="https://torchlight.dev" target="__blank">Torchlight</a></p>
+        </div>
+    </main>
+
+    <aside
+        x-data="visibleNavHighlighter"
+        x-on:scroll.window.throttle.50ms="onScroll()"
+        style="top: 4rem" class="fixed py-8 px-6 right-0 bottom-0 w-64 overflow-y-auto hidden xl:block"
+    >
+        <span x-show="headings.length > 0" class="block font-semibold mb-2 text-brand-light text-sm uppercase tracking-wider">On this page</span>
+
+        <ul class="space-y-3 text-gray-800">
+            <template x-for="heading in headings">
+                <li class="text-sm text-gray-600" :class="heading.tagName.toLowerCase() === 'h3' && 'ml-4'">
+                    <a
+                        :href="'#'+heading.id"
+                        class="hover:text-gray-900"
+                        :class="visibleHeadingId == heading.id && 'font-medium text-gray-900'"
+                        x-text="heading.innerText"
+                    ></a>
+                </li>
+            </template>
+        </ul>
+
+        <div class="mt-8 block bg-[#F6F7F9] p-6">
+            <h3 class="text-2xl font-bold font-title text-brand-dark">
+                Alpine Components Are Coming!
+            </h3>
+
+            <a href="../components.html" class="mt-4 flex items-center justify-center bg-brand px-4 py-1 font-title text-white text-sm text-center font-bold rounded-full">
+                Take a peak <span class="ml-2 text-xl font-normal">&rarr;</span>
+            </a>
+        </div>
+    </aside>
+
+    <script>
+        document.addEventListener('alpine:initializing', () => {
+            Alpine.data('visibleNavHighlighter', () => ({
+                headings: undefined,
+                visibleHeadingId: null,
+
+                init() {
+                    // Grab all the headings inside the main container.
+                    this.headings = document.querySelectorAll('[listen-for-intersection-of-titles] h2, [listen-for-intersection-of-titles] h3')
+
+                    this.assignHeadingIds()
+
+                    this.onScroll()
+                },
+
+                assignHeadingIds() {
+                    // If a heading doesn't have an [id], we'll give it one
+                    // based on its text content.
+                    this.headings.forEach(heading => {
+                        if (heading.id) return
+
+                        heading.id = heading.textContent.replace(/\s+/g, '-').toLowerCase()
+                    })
+                },
+
+                onScroll() {
+                    // We're gonna highlight the first heading above an imaginary
+                    // drawn horizontally across the center of the screen.
+
+                    // Get the distance from the top of that line.
+                    let relativeTop = window.innerHeight / 2
+
+                    let headingsByDistanceFromTop = {}
+
+                    // Populate an object of headings by their distance from our
+                    // imaginary lines as the keys.
+                    this.headings.forEach(heading => {
+                        headingsByDistanceFromTop[heading.getBoundingClientRect().top - relativeTop] = heading
+                    })
+
+                    // Grab the first one that is above that line.
+                    let closestNegativeTop = Math.max(...Object.keys(headingsByDistanceFromTop).filter(top => top < 0))
+
+                    // If we couldn't find one, don't highlight anything.
+                    if (closestNegativeTop >= 0 || [Infinity, NaN, -Infinity].includes(closestNegativeTop)) return this.visibleHeadingId = null
+
+                    // Otherwise, highlight that heading.
+                    this.visibleHeadingId = headingsByDistanceFromTop[closestNegativeTop].id
+                },
+            }))
+        })
+    </script>
+</body>
+</html>
+ 
