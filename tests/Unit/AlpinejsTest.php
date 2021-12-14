@@ -30,15 +30,15 @@ class AlpinejsTest extends TestCase
     /** @test */
     public function it_can_format_the_documentation_files()
     {
-        $gitHubNavbar = 'js-header-wrapper';
+        $header = '<header';
 
         $this->assertStringContainsString(
-            $gitHubNavbar,
+            $header,
             Storage::get($this->docset->downloadedIndex())
         );
 
         $this->assertStringNotContainsString(
-            $gitHubNavbar,
+            $header,
             $this->docset->format($this->docset->downloadedIndex())
         );
     }
