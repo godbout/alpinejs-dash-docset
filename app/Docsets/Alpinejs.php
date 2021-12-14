@@ -100,7 +100,7 @@ class Alpinejs extends BaseDocset
         $this->updateContainerWidthAndMargins($crawler);
         $this->updateBottomPadding($crawler);
 
-        $this->insertOnlineRedirection($crawler);
+        $this->insertOnlineRedirection($crawler, $file);
         $this->insertDashTableOfContents($crawler);
 
         return $crawler->saveHTML();
@@ -158,9 +158,11 @@ class Alpinejs extends BaseDocset
         ;
     }
 
-    protected function insertOnlineRedirection(HtmlPageCrawler $crawler)
+    protected function insertOnlineRedirection(HtmlPageCrawler $crawler, string $file)
     {
-        $crawler->filter('html')->prepend("<!-- Online page at https://github.com/alpinejs/alpine -->");
+        $onlineUrl = Str::substr(Str::after($file, $this->innerDirectory()), 1, -5);
+
+        $crawler->filter('html')->prepend("<!-- Online page at https://$onlineUrl -->");
     }
 
     protected function insertDashTableOfContents(HtmlPageCrawler $crawler)
