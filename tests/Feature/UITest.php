@@ -91,6 +91,90 @@ class UITest extends TestCase
     }
 
     /** @test */
+    public function the_top_padding_gets_updated_in_the_dash_docset_files()
+    {
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main')->hasClass('pt-24')
+        );
+
+
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->innerIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main')->hasClass('pt-6')
+        );
+    }
+
+    /** @test */
+    public function the_left_padding_gets_updated_in_the_dash_docset_files()
+    {
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main')->hasClass('xl:pr-64')
+        );
+
+
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->innerIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main')->hasClass('pr-6')
+        );
+    }
+
+    /** @test */
+    public function the_container_width_and_margins_gets_updated_in_the_dash_docset_files()
+    {
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main > div:first-of-type')->hasClass('m-auto')
+        );
+
+
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->innerIndex())
+        );
+
+        $this->assertFalse(
+            $crawler->filter('main > div:first-of-type')->hasClass('m-auto')
+        );
+    }
+
+    /** @test */
+    public function the_bottom_padding_gets_updated_in_the_dash_docset_files()
+    {
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->downloadedIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main > div:first-of-type')->hasClass('pb-24')
+        );
+
+
+        $crawler = HtmlPageCrawler::create(
+            Storage::get($this->docset->innerIndex())
+        );
+
+        $this->assertTrue(
+            $crawler->filter('main > div:first-of-type')->hasClass('pb-6')
+        );
+    }
+
+    /** @test */
     public function it_inserts_dash_anchors_in_the_doc_files()
     {
         $this->assertStringContainsString(
