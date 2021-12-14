@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/app.css%3Fid=8f234a1ce84613005d1d.css">
+
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/trap@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/collapse@3.7.0/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/morph@3.7.0/dist/cdn.min.js"></script>
+    <!-- <script defer src="http://alpine.test/packages/alpinejs/dist/cdn.min.js"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Social Media -->
+    <meta name="twitter:card" content="summary_large_image">
+            <meta name="og:title" content="Upgrade From V2 — Alpine.js">
+                <meta name="og:description" content="A rugged, minimal framework for composing behavior directly in your markup.">
+    <meta name="og:image" content="https://alpinejs.dev/social.jpg">
+
+            <title>Upgrade From V2 — Alpine.js</title>
+    
+    <meta name="description" content="A rugged, minimal framework for composing behavior directly in your markup.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png">
+
+    <style>
+         h1, h2, h3, h4, .font-title { font-family: 'Karla', system-ui, -apple-system, /* Firefox supports this but not yet `system-ui` */ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'; }
+        code { font-family: MonoLisa, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace }
+        html { scroll-behavior: smooth;  }
+        .text-brand { color: hsl(193 42% 49% / 1); }
+        ::selection { background-color: #c9f3fd; }
+    </style>
+
+            <!-- Fathom - beautiful, simple website analytics -->
+        <script src="https://fancyrat.calebporzio.com/script.js" data-site="AROBLZOR" defer></script>
+    </head>
+<body>
+    <header style="height: 4rem" class="bg-white fixed flex items-center justify-between left-0 right-0 top-0 z-10">
+        <div class="text-2xl font-semibold md:w-64 text-gray-800 hover:text-gray-900 pl-6 py-0">
+            <a href="index.html" class="flex items-center">
+                <img src="alpine_long.svg" class="w-[290px]" alt="">
+            </a>
+        </div>
+
+        <div class="space-x-6 text-brand-dark hidden md:flex justify-end items-center w-64 pr-6 py-4">
+            <a href="https://github.com/alpinejs/alpine" class="block hover:text-gray-600"><svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>GitHub</title><path d="M10 0a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69a3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 10 0"></path></svg></a>
+            <a href="https://twitter.com/Alpine_JS" class="block hover:text-gray-600"><svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Twitter</title><path d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84"></path></svg></a>
+            <a href="https://alpinejs.codewithhugo.com/chat/" class="block hover:text-gray-600"><svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146 146"><title>Discord</title><path d="M107.75 125.001s-4.5-5.375-8.25-10.125c16.375-4.625 22.625-14.875 22.625-14.875-5.125 3.375-10 5.75-14.375 7.375-6.25 2.625-12.25 4.375-18.125 5.375-12 2.25-23 1.625-32.375-.125-7.125-1.375-13.25-3.375-18.375-5.375-2.875-1.125-6-2.5-9.125-4.25-.375-.25-.75-.375-1.125-.625-.25-.125-.375-.25-.5-.375-2.25-1.25-3.5-2.125-3.5-2.125s6 10 21.875 14.75c-3.75 4.75-8.375 10.375-8.375 10.375-27.625-.875-38.125-19-38.125-19 0-40.25 18-72.875 18-72.875 18-13.5 35.125-13.125 35.125-13.125l1.25 1.5c-22.5 6.5-32.875 16.375-32.875 16.375s2.75-1.5 7.375-3.625c13.375-5.875 24-7.5 28.375-7.875.75-.125 1.375-.25 2.125-.25 7.625-1 16.25-1.25 25.25-.25 11.875 1.375 24.625 4.875 37.625 12 0 0-9.875-9.375-31.125-15.875l1.75-2S110 19.626 128 33.126c0 0 18 32.625 18 72.875 0 0-10.625 18.125-38.25 19zM49.625 66.626c-7.125 0-12.75 6.25-12.75 13.875s5.75 13.875 12.75 13.875c7.125 0 12.75-6.25 12.75-13.875.125-7.625-5.625-13.875-12.75-13.875zm45.625 0c-7.125 0-12.75 6.25-12.75 13.875s5.75 13.875 12.75 13.875c7.125 0 12.75-6.25 12.75-13.875s-5.625-13.875-12.75-13.875z" fill-rule="nonzero"></path></svg></a>
+        </div>
+
+        <div class="md:hidden flex items-center pr-6" x-data="{ show: false }">
+            <button class="text-gray-600 focus:outline-none" x-on:click="show = ! show">
+                <svg x-show="! show" class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg>
+                <svg x-show="show" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+            </button>
+
+            <div class="bg-gray-100 bottom-0 fixed p-6 right-0 shadow-xl w-1/2 overflow-y-auto" style="top: 4rem" x-show="show"
+                x-transition:enter="transition ease-in-out duration-300 transform"
+                x-transition:enter-start="translate-x-full"
+                x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in-out duration-300 transform"
+                x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-full">
+                <ul class="space-y-2 text-gray-800">
+                                                                        <li  class="font-medium" ><a href="start-here.html" class="hover:text-gray-900">Start Here</a></li>
+                                                                                                <li  class="-ml-6 border-gray-700 border-l-4 pl-5 font-semibold" ><a href="upgrade-guide.html" class="hover:text-gray-900">Upgrade From V2</a></li>
+                                                                                                <li>
+                                <span class="font-medium">Essentials</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="essentials/installation.html" class="hover:text-gray-900">Installation</a></li>
+                                                                        <li   class=""  ><a href="essentials/state.html" class="hover:text-gray-900">State</a></li>
+                                                                        <li   class=""  ><a href="essentials/templating.html" class="hover:text-gray-900">Templating</a></li>
+                                                                        <li   class=""  ><a href="essentials/events.html" class="hover:text-gray-900">Events</a></li>
+                                                                        <li   class=""  ><a href="essentials/lifecycle.html" class="hover:text-gray-900">Lifecycle</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Directives</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="directives/data.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>data</a></li>
+                                                                        <li   class=""  ><a href="directives/init.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>init</a></li>
+                                                                        <li   class=""  ><a href="directives/show.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>show</a></li>
+                                                                        <li   class=""  ><a href="directives/bind.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>bind</a></li>
+                                                                        <li   class=""  ><a href="directives/on.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>on</a></li>
+                                                                        <li   class=""  ><a href="directives/text.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>text</a></li>
+                                                                        <li   class=""  ><a href="directives/html.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>html</a></li>
+                                                                        <li   class=""  ><a href="directives/model.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>model</a></li>
+                                                                        <li   class=""  ><a href="directives/for.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>for</a></li>
+                                                                        <li   class=""  ><a href="directives/transition.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>transition</a></li>
+                                                                        <li   class=""  ><a href="directives/effect.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>effect</a></li>
+                                                                        <li   class=""  ><a href="directives/ignore.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ignore</a></li>
+                                                                        <li   class=""  ><a href="directives/ref.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ref</a></li>
+                                                                        <li   class=""  ><a href="directives/cloak.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>cloak</a></li>
+                                                                        <li   class=""  ><a href="directives/teleport.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>teleport</a></li>
+                                                                        <li   class=""  ><a href="directives/if.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>if</a></li>
+                                                                        <li   class=""  ><a href="directives/id.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>id</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Magics</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="magics/el.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>el</a></li>
+                                                                        <li   class=""  ><a href="magics/refs.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>refs</a></li>
+                                                                        <li   class=""  ><a href="magics/store.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>store</a></li>
+                                                                        <li   class=""  ><a href="magics/watch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>watch</a></li>
+                                                                        <li   class=""  ><a href="magics/dispatch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>dispatch</a></li>
+                                                                        <li   class=""  ><a href="magics/nextTick.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>nextTick</a></li>
+                                                                        <li   class=""  ><a href="magics/root.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>root</a></li>
+                                                                        <li   class=""  ><a href="magics/data.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>data</a></li>
+                                                                        <li   class=""  ><a href="magics/id.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>id</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Globals</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="globals/alpine-data.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>data()</a></li>
+                                                                        <li   class=""  ><a href="globals/alpine-store.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>store()</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Plugins</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="plugins/intersect.html" class="hover:text-gray-900">Intersect</a></li>
+                                                                        <li   class=""  ><a href="plugins/persist.html" class="hover:text-gray-900">Persist</a></li>
+                                                                        <li   class=""  ><a href="plugins/trap.html" class="hover:text-gray-900">Trap</a></li>
+                                                                        <li   class=""  ><a href="plugins/collapse.html" class="hover:text-gray-900">Collapse</a></li>
+                                                                        <li   class=""  ><a href="plugins/morph.html" class="hover:text-gray-900">Morph</a></li>
+                                                                    </ul>
+                            </li>
+                                                                                                <li>
+                                <span class="font-medium">Advanced</span>
+                                <ul class="pl-3">
+                                                                        <li   class=""  ><a href="advanced/reactivity.html" class="hover:text-gray-900">Reactivity</a></li>
+                                                                        <li   class=""  ><a href="advanced/extending.html" class="hover:text-gray-900">Extending</a></li>
+                                                                        <li   class=""  ><a href="advanced/async.html" class="hover:text-gray-900">Async</a></li>
+                                                                        <li   class=""  ><a href="advanced/csp.html" class="hover:text-gray-900">CSP</a></li>
+                                                                    </ul>
+                            </li>
+                                                            </ul>
+            </div>
+        </div>
+    </header>
+
+    <style>[hover-scrollbar] { overflow-x: 'visible'; overflow-y: hidden; } [hover-scrollbar]:hover { overflow-y: auto }</style>
+    <aside style="top: 4rem" class="fixed pb-6 pt-8 px-8 left-0 bottom-0 hidden md:block w-48 lg:w-64" hover-scrollbar>
+        <ul class="space-y-2 text-brand-dark">
+                            
+                                    <li  class="font-medium" ><a href="start-here.html" class="hover:text-gray-900">Start Here</a></li>
+                                                                <li class="font-medium">
+                        <a href="components.html" class="hover:text-gray-900">
+                            <div class="relative">
+                                Components <span class="hidden lg:inline relative">
+                                    <div class="h-full top-0 left-2 flex items-center absolute">
+                                        <span class="text-xs bg-brand text-white font-bold px-[.45rem] py-[.1rem] rounded-full whitespace-nowrap">Coming soon!</span>
+                                    </div>
+                                </span>
+
+                            </div>
+
+                            <ul class="pl-3 relative">
+                                <div class="absolute inset-0 bg-gradient-to-b from-[#fff2] to-white"></div>
+                                <li>Modal</li>
+                                <li>Dropdown</li>
+                            </ul>
+                        </a>
+                    </li>
+                
+                                    <li  class="-ml-8 border-gray-700 border-brand border-l-4 pl-7 font-semibold" ><a href="upgrade-guide.html" class="hover:text-gray-900">Upgrade From V2</a></li>
+                                            
+                                    <li>
+                        <span class="font-medium">Essentials</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="essentials/installation.html" class="hover:text-gray-900">Installation</a></li>
+                                                        <li   class=""  ><a href="essentials/state.html" class="hover:text-gray-900">State</a></li>
+                                                        <li   class=""  ><a href="essentials/templating.html" class="hover:text-gray-900">Templating</a></li>
+                                                        <li   class=""  ><a href="essentials/events.html" class="hover:text-gray-900">Events</a></li>
+                                                        <li   class=""  ><a href="essentials/lifecycle.html" class="hover:text-gray-900">Lifecycle</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Directives</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="directives/data.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>data</a></li>
+                                                        <li   class=""  ><a href="directives/init.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>init</a></li>
+                                                        <li   class=""  ><a href="directives/show.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>show</a></li>
+                                                        <li   class=""  ><a href="directives/bind.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>bind</a></li>
+                                                        <li   class=""  ><a href="directives/on.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>on</a></li>
+                                                        <li   class=""  ><a href="directives/text.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>text</a></li>
+                                                        <li   class=""  ><a href="directives/html.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>html</a></li>
+                                                        <li   class=""  ><a href="directives/model.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>model</a></li>
+                                                        <li   class=""  ><a href="directives/for.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>for</a></li>
+                                                        <li   class=""  ><a href="directives/transition.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>transition</a></li>
+                                                        <li   class=""  ><a href="directives/effect.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>effect</a></li>
+                                                        <li   class=""  ><a href="directives/ignore.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ignore</a></li>
+                                                        <li   class=""  ><a href="directives/ref.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>ref</a></li>
+                                                        <li   class=""  ><a href="directives/cloak.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>cloak</a></li>
+                                                        <li   class=""  ><a href="directives/teleport.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>teleport</a></li>
+                                                        <li   class=""  ><a href="directives/if.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>if</a></li>
+                                                        <li   class=""  ><a href="directives/id.html" class="hover:text-gray-900"> <span class="text-brand-light">x-</span>id</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Magics</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="magics/el.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>el</a></li>
+                                                        <li   class=""  ><a href="magics/refs.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>refs</a></li>
+                                                        <li   class=""  ><a href="magics/store.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>store</a></li>
+                                                        <li   class=""  ><a href="magics/watch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>watch</a></li>
+                                                        <li   class=""  ><a href="magics/dispatch.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>dispatch</a></li>
+                                                        <li   class=""  ><a href="magics/nextTick.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>nextTick</a></li>
+                                                        <li   class=""  ><a href="magics/root.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>root</a></li>
+                                                        <li   class=""  ><a href="magics/data.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>data</a></li>
+                                                        <li   class=""  ><a href="magics/id.html" class="hover:text-gray-900"> <span class="text-brand-light">$</span>id</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Globals</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="globals/alpine-data.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>data()</a></li>
+                                                        <li   class=""  ><a href="globals/alpine-store.html" class="hover:text-gray-900"> <span class="text-brand-light">Alpine.</span>store()</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Plugins</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="plugins/intersect.html" class="hover:text-gray-900">Intersect</a></li>
+                                                        <li   class=""  ><a href="plugins/persist.html" class="hover:text-gray-900">Persist</a></li>
+                                                        <li   class=""  ><a href="plugins/trap.html" class="hover:text-gray-900">Trap</a></li>
+                                                        <li   class=""  ><a href="plugins/collapse.html" class="hover:text-gray-900">Collapse</a></li>
+                                                        <li   class=""  ><a href="plugins/morph.html" class="hover:text-gray-900">Morph</a></li>
+                                                    </ul>
+                    </li>
+                                            
+                                    <li>
+                        <span class="font-medium">Advanced</span>
+                        <ul class="pl-3">
+                                                        <li   class=""  ><a href="advanced/reactivity.html" class="hover:text-gray-900">Reactivity</a></li>
+                                                        <li   class=""  ><a href="advanced/extending.html" class="hover:text-gray-900">Extending</a></li>
+                                                        <li   class=""  ><a href="advanced/async.html" class="hover:text-gray-900">Async</a></li>
+                                                        <li   class=""  ><a href="advanced/csp.html" class="hover:text-gray-900">CSP</a></li>
+                                                    </ul>
+                    </li>
+                                    </ul>
+    </aside>
+
+    <main class="pt-24 pl-0 md:pl-48 lg:pl-64 pr-0 xl:pr-64">
+        <style>
+            .markdown>*+* { margin-top: 1.5rem; }
+            .markdown p { line-height: 1.75; }
+            .markdown h1, .markdown h2, .markdown h3 { color: #2d3342; scroll-margin-top: 4rem; font-weight: 800; letter-spacing: -.025em; }
+            .markdown h1, .markdown h2 { border-bottom-width: 1px; border-color: #edf2f7; }
+            .markdown h1 { font-size: 2.25rem; }
+            .markdown h2 { font-size: 1.5rem; }
+            .markdown h3 { font-size: 1.25rem; }
+            .markdown ul { list-style-type: disc; }
+            .markdown a { color: hsl(192deg 51% 46%); font-weight: 600; }
+            .markdown h1 a, .markdown h2 a, .markdown h3 a { position: relative; color: #2d3342; font-weight: 800; }
+            .markdown h1 a::before, .markdown h2 a::before, .markdown h3 a::before {
+                position: absolute;
+                left: -1.35rem;
+                content: "# ";
+                color: rgba(175, 187, 199);
+                font-weight: 600;
+            }
+            .markdown h1 a:hover::before, .markdown h2 a:hover::before, .markdown h3 a:hover::before {
+                color: #7e8a9e;
+            }
+            .markdown code { white-space: nowrap; padding-top: .1rem; padding-bottom: .1rem; padding-left: .25rem; padding-right: .25rem; font-size: .875rem; font-weight: 600; border-radius: .25rem; background-color: #edf2f7; }
+            pre {
+                overflow-y: auto;
+                background: #f6f7f9;
+                font-size: .875rem;
+                border-radius: .25rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                overflow-x: auto;
+                background: #f6f7f9;
+            }
+            pre code.torchlight {
+                display: block;
+                min-width: -webkit-max-content;
+                min-width: -moz-max-content;
+                min-width: max-content;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                padding-left: 0;
+                padding-right: 0;
+                background-color: #f6f7f9 !important;
+                white-space: pre;
+                font-weight: 400;
+            }
+            pre code.torchlight .line {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            pre code.torchlight .line-number,
+            pre code.torchlight .summary-caret {
+                margin-right: 1rem;
+            }
+            .markdown blockquote { font-size: .95em; color: #2d3748; padding: 1rem; border-left-width: 4px; border-color: rgba(119, 193, 210); background: #f6f7f9; }
+            .markdown table tbody td { border-color: #d8dee9; border-width: 1px; padding: .25rem .5rem }
+            .demo { background: white; padding: 1rem; border-width: 1px; border-radius: .25rem; border-color: #d8dee9; }
+            .demo li { list-style-position: inside; }
+            .demo button { padding: 0 .5rem; border-width: 1px; border-radius: .25rem; border-color: #a0aec0; background-color: #e2e8f0; }
+            .demo button:hover { background-color: #edf2f7; }
+            .demo input, .demo textarea, .demo select { padding: .25rem .5rem; border-width: 1px; border-radius: .25rem; border-color: #cbd5e0; }
+            .demo input[type="checkbox"] { padding: 0; }
+            .demo input[type="radio"] { padding: 0; border-radius: 999px; }
+            .demo select { padding-right: 2.5rem; }
+            /* .demo input[type="radio"] { border-radius: 999px; } */
+        </style>
+        <div class="m-auto max-w-3xl px-6 pb-24 text-gray-800 antialiased markdown" listen-for-intersection-of-titles>
+            <h1>Upgrade from V2</h1>
+<p>Below is an exhaustive guide on the breaking changes in Alpine V3, but if you'd prefer something more lively, you can review all the changes as well as new features in V3 by watching the Alpine Day 2021 &quot;Future of Alpine&quot; keynote:</p>
+
+<div class="relative w-full" style="padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+    <iframe
+            class="absolute top-0 left-0 right-0 bottom-0 w-full h-full"
+            src="https://www.youtube.com/embed/WixS4JXMwIQ?modestbranding=1&autoplay=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+    ></iframe>
+</div>
+
+<p>Upgrading from Alpine V2 to V3 should be fairly painless. In many cases, NOTHING has to be done to your codebase to use V3. Below is an exhaustive list of breaking changes and deprecations in descending order of how likely users are to be affected by them:</p>
+<blockquote>
+<p>Note if you use Laravel Livewire and Alpine together, to use V3 of Alpine, you will need to upgrade to Livewire v2.5.1 or greater.</p>
+</blockquote>
+<h2 id="breaking-changes"><a href="upgrade-guide.html#breaking-changes">Breaking Changes</a></h2>
+<ul>
+<li>
+<a href="upgrade-guide.html#el-no-longer-root"><code>$el</code> is now always the current element</a>
+</li>
+<li>
+<a href="upgrade-guide.html#auto-init">Automatically evaluate <code>init()</code> functions defined on data object</a>
+</li>
+<li>
+<a href="upgrade-guide.html#need-to-call-alpine-start">Need to call <code>Alpine.start()</code> after import</a>
+</li>
+<li>
+<a href="upgrade-guide.html#removed-show-dot-transition"><code>x-show.transition</code> is now <code>x-transition</code></a>
+</li>
+<li>
+<a href="upgrade-guide.html#x-if-no-transitions"><code>x-if</code> no longer supports <code>x-transition</code></a>
+</li>
+<li>
+<a href="upgrade-guide.html#x-data-scope"><code>x-data</code> cascading scope</a>
+</li>
+<li>
+<a href="upgrade-guide.html#x-init-no-callback"><code>x-init</code> no longer accepts a callback return</a>
+</li>
+<li>
+<a href="upgrade-guide.html#no-false-return-from-event-handlers">Returning <code>false</code> from event handlers no longer implicitly &quot;preventDefault&quot;s</a>
+</li>
+<li>
+<a href="upgrade-guide.html#x-spread-now-x-bind"><code>x-spread</code> is now <code>x-bind</code></a>
+</li>
+<li>
+<a href="upgrade-guide.html#x-ref-no-more-dynamic"><code>x-ref</code> no longer supports binding</a>
+</li>
+<li>
+<a href="upgrade-guide.html#use-global-events-now">Use global lifecycle events instead of <code>Alpine.deferLoadingAlpine()</code></a>
+</li>
+<li>
+<a href="upgrade-guide.html#no-ie-11">IE11 no longer supported</a>
+</li>
+</ul>
+<h3 id="el-no-longer-root"><a href="upgrade-guide.html#el-no-longer-root"><code>$el</code> is now always the current element</a></h3>
+<p><code>$el</code> now always represents the element that an expression was executed on, not the root element of the component. This will replace most usages of <code>x-ref</code> and in the cases where you still want to access the root of a component, you can do so using <code>$root</code>. For example:</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">console.</span><span style="color: #6F42C1;">log</span><span style="color: #24292E;">($el)</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #6A737D;">&lt;!-- In V2, $el would have been the &lt;div&gt;, now it&#39;s the &lt;button&gt; --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">console.</span><span style="color: #6F42C1;">log</span><span style="color: #24292E;">($root)</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p>For a smoother upgrade experience, you can replace all instances of <code>$el</code> with a custom magic called <code>$root</code>.</p>
+<p><a href="magics/el.html">→ Read more about $el in V3</a><br />
+<a href="magics/root.html">→ Read more about $root in V3</a></p>
+<h3 id="auto-init"><a href="upgrade-guide.html#auto-init">Automatically evaluate <code>init()</code> functions defined on data object</a></h3>
+<p>A common pattern in V2 was to manually call an <code>init()</code> (or similarly named method) on an <code>x-data</code> object.</p>
+<p>In V3, Alpine will automatically call <code>init()</code> methods on data objects.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">foo</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-init</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">init</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">foo</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #D73A49;">function</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">foo</span><span style="color: #24292E;">() {</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #D73A49;">return</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">            </span><span style="color: #6F42C1;">init</span><span style="color: #24292E;">() {</span></div><div class='line'><span style="color: #24292E;">                </span><span style="color: #6A737D;">//</span></div><div class='line'><span style="color: #24292E;">            }</span></div><div class='line'><span style="color: #24292E;">        }</span></div><div class='line'><span style="color: #24292E;">    }</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="globals/alpine-data.html#init-functions">→ Read more about auto-evaluating init functions</a></p>
+<h3 id="need-to-call-alpine-start"><a href="upgrade-guide.html#need-to-call-alpine-start">Need to call Alpine.start() after import</a></h3>
+<p>If you were importing Alpine V2 from NPM, you will now need to manually call <code>Alpine.start()</code> for V3. This doesn't affect you if you use Alpine's build file or CDN from a <code>&lt;template&gt;</code> tag.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">// 🚫 Before</span></div><div class='line'><span style="color: #D73A49;">import</span><span style="color: #24292E;"> </span><span style="color: #032F62;">&#39;alpinejs&#39;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">// ✅ After</span></div><div class='line'><span style="color: #D73A49;">import</span><span style="color: #24292E;"> Alpine </span><span style="color: #D73A49;">from</span><span style="color: #24292E;"> </span><span style="color: #032F62;">&#39;alpinejs&#39;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">window.Alpine </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> Alpine</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">Alpine.</span><span style="color: #6F42C1;">start</span><span style="color: #24292E;">()</span></div></code></pre>
+<p><a href="essentials/installation.html#as-a-module">→ Read more about initializing Alpine V3</a></p>
+<h3 id="removed-show-dot-transition"><a href="upgrade-guide.html#removed-show-dot-transition"><code>x-show.transition</code> is now <code>x-transition</code></a></h3>
+<p>All of the conveniences provided by <code>x-show.transition...</code> helpers are still available, but now from a more unified API: <code>x-transition</code>:</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">transition</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-transition</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">transition</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">duration</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">500ms</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;open&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-transition</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">duration</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">500ms</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">transition</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">in</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">duration</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">500ms</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">out</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">duration</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">750ms</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;open&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #6F42C1;">x-transition:enter</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">duration</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">500ms</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #6F42C1;">x-transition:leave</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">duration</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">750ms</span></div><div class='line'><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="directives/transition.html">→ Read more about x-transition</a></p>
+<h3 id="x-if-no-transitions"><a href="upgrade-guide.html#x-if-no-transitions"><code>x-if</code> no longer supports <code>x-transition</code></a></h3>
+<p>The ability to transition elements in and add before/after being removed from the DOM is no longer available in Alpine.</p>
+<p>This was a feature very few people even knew existed let alone used.</p>
+<p>Because the transition system is complex, it makes more sense from a maintenance perspective to only support transitioning elements with <code>x-show</code>.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">template</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-if</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">transition</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;...&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">template</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-transition</span><span style="color: #24292E;">&gt;...&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="directives/if.html">→ Read more about x-if</a></p>
+<h3 id="x-data-scope"><a href="upgrade-guide.html#x-data-scope"><code>x-data</code> cascading scope</a></h3>
+<p>Scope defined in <code>x-data</code> is now available to all children unless overwritten by a nested <code>x-data</code> expression.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{ foo: </span><span style="color: #032F62;">&#39;bar&#39;</span><span style="color: #24292E;"> }</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{}</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6A737D;">&lt;!-- foo is undefined --&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{ foo: </span><span style="color: #032F62;">&#39;bar&#39;</span><span style="color: #24292E;"> }</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{}</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6A737D;">&lt;!-- foo is &#39;bar&#39; --&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="directives/data.html#scope">→ Read more about x-data scoping</a></p>
+<h3 id="x-init-no-callback"><a href="upgrade-guide.html#x-init-no-callback"><code>x-init</code> no longer accepts a callback return</a></h3>
+<p>Before V3, if <code>x-init</code> received a return value that is <code>typeof</code> &quot;function&quot;, it would execute the callback after Alpine finished initializing all other directives in the tree. Now, you must manually call <code>$nextTick()</code> to achieve that behavior. <code>x-init</code> is no longer &quot;return value aware&quot;.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-init</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">() </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> { </span><span style="color: #D73A49;">...</span><span style="color: #24292E;"> }</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;...&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-init</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">$nextTick</span><span style="color: #24292E;">(() </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> { </span><span style="color: #D73A49;">...</span><span style="color: #24292E;"> })</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;...&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="essentials/installation.html">→ Read more about $nextTick</a></p>
+<h3 id="no-false-return-from-event-handlers"><a href="upgrade-guide.html#no-false-return-from-event-handlers">Returning <code>false</code> from event handlers no longer implicitly &quot;preventDefault&quot;s</a></h3>
+<p>Alpine V2 observes a return value of <code>false</code> as a desire to run <code>preventDefault</code> on the event. This conforms to the standard behavior of native, inline listeners: <code>&lt;... oninput=&quot;someFunctionThatReturnsFalse()&quot;&gt;</code>. Alpine V3 no longer supports this API. Most people don't know it exists and therefore is surprising behavior.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{ </span><span style="color: #6F42C1;">blockInput</span><span style="color: #24292E;">() { </span><span style="color: #D73A49;">return</span><span style="color: #24292E;"> </span><span style="color: #005CC5;">false</span><span style="color: #24292E;"> } }</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">input</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">type</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;text&quot;</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">input</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">blockInput</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{ </span><span style="color: #6F42C1;">blockInput</span><span style="color: #24292E;">(</span><span style="color: #E36209;">e</span><span style="color: #24292E;">) { e.</span><span style="color: #6F42C1;">preventDefault</span><span style="color: #24292E;">() }</span><span style="color: #032F62;">&quot;</span><span style="color: #B31D28;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;input type=</span><span style="color: #032F62;">&quot;text&quot;</span><span style="color: #24292E;"> @input=</span><span style="color: #032F62;">&quot;blockInput($event)&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/div&gt;</span></div></code></pre>
+<p><a href="directives/on.html">→ Read more about x-on</a></p>
+<h3 id="x-spread-now-x-bind"><a href="upgrade-guide.html#x-spread-now-x-bind"><code>x-spread</code> is now <code>x-bind</code></a></h3>
+<p>One of Alpine's stories for re-using functionality is abstracting Alpine directives into objects and applying them to elements with <code>x-spread</code>. This behavior is still the same, except now <code>x-bind</code> (with no specified attribute) is the API instead of <code>x-spread</code>.</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">dropdown</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-spread</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">trigger</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;Toggle&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-spread</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">dialogue</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;...&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">dropdown</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-bind</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">trigger</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;Toggle&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-bind</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">dialogue</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;...&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #D73A49;">function</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">dropdown</span><span style="color: #24292E;">() {</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #D73A49;">return</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">            open: </span><span style="color: #005CC5;">false</span><span style="color: #24292E;">,</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">            trigger: {</span></div><div class='line'><span style="color: #24292E;">                </span><span style="color: #032F62;">&#39;x-on:click&#39;</span><span style="color: #24292E;">() { </span><span style="color: #005CC5;">this</span><span style="color: #24292E;">.open </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> </span><span style="color: #D73A49;">!</span><span style="color: #24292E;"> </span><span style="color: #005CC5;">this</span><span style="color: #24292E;">.open },</span></div><div class='line'><span style="color: #24292E;">            },</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">            dialogue: {</span></div><div class='line'><span style="color: #24292E;">                </span><span style="color: #032F62;">&#39;x-show&#39;</span><span style="color: #24292E;">() { </span><span style="color: #D73A49;">return</span><span style="color: #24292E;"> </span><span style="color: #005CC5;">this</span><span style="color: #24292E;">.open },</span></div><div class='line'><span style="color: #24292E;">                </span><span style="color: #032F62;">&#39;x-bind:class&#39;</span><span style="color: #24292E;">() { </span><span style="color: #D73A49;">return</span><span style="color: #24292E;"> </span><span style="color: #032F62;">&#39;foo bar&#39;</span><span style="color: #24292E;"> },</span></div><div class='line'><span style="color: #24292E;">            },</span></div><div class='line'><span style="color: #24292E;">        }</span></div><div class='line'><span style="color: #24292E;">    }</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="directives/bind.html#bind-directives">→ Read more about binding directives using x-bind</a></p>
+<h3 id="use-global-events-now"><a href="upgrade-guide.html#use-global-events-now">Use global lifecycle events instead of <code>Alpine.deferLoadingAlpine()</code></a></h3>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    window.</span><span style="color: #6F42C1;">deferLoadingAlpine</span><span style="color: #24292E;"> </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> </span><span style="color: #E36209;">startAlpine</span><span style="color: #24292E;"> </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6A737D;">// Will be executed before initializing Alpine.</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6F42C1;">startAlpine</span><span style="color: #24292E;">()</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6A737D;">// Will be executed after initializing Alpine.</span></div><div class='line'><span style="color: #24292E;">    }</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    document.</span><span style="color: #6F42C1;">addEventListener</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;alpine:init&#39;</span><span style="color: #24292E;">, () </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6A737D;">// Will be executed before initializing Alpine.</span></div><div class='line'><span style="color: #24292E;">    })</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">    document.</span><span style="color: #6F42C1;">addEventListener</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;alpine:initialized&#39;</span><span style="color: #24292E;">, () </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #6A737D;">// Will be executed after initializing Alpine.</span></div><div class='line'><span style="color: #24292E;">    })</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p><a href="essentials/lifecycle.html#alpine-initialization">→ Read more about Alpine lifecycle events</a></p>
+<h3 id="x-ref-no-more-dynamic"><a href="upgrade-guide.html#x-ref-no-more-dynamic"><code>x-ref</code> no longer supports binding</a></h3>
+<p>In Alpine V2 for below code</p>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">{options: [{value: </span><span style="color: #005CC5;">1</span><span style="color: #24292E;">}, {value: </span><span style="color: #005CC5;">2</span><span style="color: #24292E;">}, {value: </span><span style="color: #005CC5;">3</span><span style="color: #24292E;">}] }</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-ref</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #005CC5;">0</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;0&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">template</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-for</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">option </span><span style="color: #D73A49;">in</span><span style="color: #24292E;"> options</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">        &lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> :</span><span style="color: #6F42C1;">x-ref</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">option.value</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-text</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">option.value</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    &lt;/</span><span style="color: #22863A;">template</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">    &lt;</span><span style="color: #22863A;">button</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">console.</span><span style="color: #6F42C1;">log</span><span style="color: #24292E;">($refs[</span><span style="color: #005CC5;">0</span><span style="color: #24292E;">], $refs[</span><span style="color: #005CC5;">1</span><span style="color: #24292E;">], $refs[</span><span style="color: #005CC5;">2</span><span style="color: #24292E;">], $refs[</span><span style="color: #005CC5;">3</span><span style="color: #24292E;">]);</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;Display $refs&lt;/</span><span style="color: #22863A;">button</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<p>after clicking button all <code>$refs</code> were displayed. However in Alpine V3 it's possible to access only <code>$refs</code> for elements created statically, so only first ref will be returned as expected.</p>
+<h3 id="no-ie-11"><a href="upgrade-guide.html#no-ie-11">IE11 no longer supported</a></h3>
+<p>Alpine will no longer officially support Internet Explorer 11. If you need support for IE11, we recommend still using Alpine V2.</p>
+<h2>Deprecated APIs</h2>
+<p>The following 2 APIs will still work in V3, but are considered deprecated and are likely to be removed at some point in the future.</p>
+<h3 id="away-replace-with-outside"><a href="upgrade-guide.html#away-replace-with-outside">Event listener modifier <code>.away</code> should be replaced with <code>.outside</code></a></h3>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">away</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> </span><span style="color: #005CC5;">false</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    ...</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-show</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;"> @</span><span style="color: #6F42C1;">click</span><span style="color: #24292E;">.</span><span style="color: #6F42C1;">outside</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">open </span><span style="color: #D73A49;">=</span><span style="color: #24292E;"> </span><span style="color: #005CC5;">false</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    ...</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<h3 id="alpine-data-instead-of-global-functions"><a href="upgrade-guide.html#alpine-data-instead-of-global-functions">Prefer <code>Alpine.data()</code> to global Alpine function data providers</a></h3>
+<pre><code class='torchlight' style='background-color: #fff; --theme-selection-background: #e2e5e9;'><!-- Syntax highlighted by torchlight.dev --><div class='line'><span style="color: #6A737D;">&lt;!-- 🚫 Before --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #6F42C1;">dropdown</span><span style="color: #24292E;">()</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    ...</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    </span><span style="color: #D73A49;">function</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">dropdown</span><span style="color: #24292E;">() {</span></div><div class='line'><span style="color: #24292E;">        </span><span style="color: #D73A49;">return</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">            </span><span style="color: #D73A49;">...</span></div><div class='line'><span style="color: #24292E;">        }</span></div><div class='line'><span style="color: #24292E;">    }</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #6A737D;">&lt;!-- ✅ After --&gt;</span></div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">div</span><span style="color: #24292E;"> </span><span style="color: #6F42C1;">x-data</span><span style="color: #24292E;">=</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">dropdown</span><span style="color: #032F62;">&quot;</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    ...</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">div</span><span style="color: #24292E;">&gt;</span></div><div class='line'>&nbsp;</div><div class='line'><span style="color: #24292E;">&lt;</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div><div class='line'><span style="color: #24292E;">    document.</span><span style="color: #6F42C1;">addEventListener</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;alpine:init&#39;</span><span style="color: #24292E;">, () </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> {</span></div><div class='line'><span style="color: #24292E;">        Alpine.</span><span style="color: #6F42C1;">data</span><span style="color: #24292E;">(</span><span style="color: #032F62;">&#39;dropdown&#39;</span><span style="color: #24292E;">, () </span><span style="color: #D73A49;">=&gt;</span><span style="color: #24292E;"> ({</span></div><div class='line'><span style="color: #24292E;">            </span><span style="color: #D73A49;">...</span></div><div class='line'><span style="color: #24292E;">        }))</span></div><div class='line'><span style="color: #24292E;">    })</span></div><div class='line'><span style="color: #24292E;">&lt;/</span><span style="color: #22863A;">script</span><span style="color: #24292E;">&gt;</span></div></code></pre>
+<blockquote>
+<p>Note that you need to define <code>Alpine.data()</code> extensions BEFORE you call <code>Alpine.start()</code>. For more information, refer to the <a href="https://alpinejs.dev/advanced/extending#lifecycle-concerns">Lifecycle Concerns</a> and <a href="https://alpinejs.dev/essentials/installation#as-a-module">Installation as a Module</a> documentation pages.</p>
+</blockquote>
+
+            <div class="border-gray-200 border-t flex justify-between pt-4 text-gray-700">
+                <div>
+                                            <a class="text-brand font-bold" href="start-here.html">← Start Here</a>
+                                    </div>
+
+                <div>
+                                            <a class="text-brand font-bold" href="essentials/installation.html">Installation →</a>
+                                    </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-600 text-center">Code highlighting provided by <a href="https://torchlight.dev" target="__blank">Torchlight</a></p>
+        </div>
+    </main>
+
+    <aside
+        x-data="visibleNavHighlighter"
+        x-on:scroll.window.throttle.50ms="onScroll()"
+        style="top: 4rem" class="fixed py-8 px-6 right-0 bottom-0 w-64 overflow-y-auto hidden xl:block"
+    >
+        <span x-show="headings.length > 0" class="block font-semibold mb-2 text-brand-light text-sm uppercase tracking-wider">On this page</span>
+
+        <ul class="space-y-3 text-gray-800">
+            <template x-for="heading in headings">
+                <li class="text-sm text-gray-600" :class="heading.tagName.toLowerCase() === 'h3' && 'ml-4'">
+                    <a
+                        :href="'#'+heading.id"
+                        class="hover:text-gray-900"
+                        :class="visibleHeadingId == heading.id && 'font-medium text-gray-900'"
+                        x-text="heading.innerText"
+                    ></a>
+                </li>
+            </template>
+        </ul>
+
+        <div class="mt-8 block bg-[#F6F7F9] p-6">
+            <h3 class="text-2xl font-bold font-title text-brand-dark">
+                Alpine Components Are Coming!
+            </h3>
+
+            <a href="components.html" class="mt-4 flex items-center justify-center bg-brand px-4 py-1 font-title text-white text-sm text-center font-bold rounded-full">
+                Take a peak <span class="ml-2 text-xl font-normal">&rarr;</span>
+            </a>
+        </div>
+    </aside>
+
+    <script>
+        document.addEventListener('alpine:initializing', () => {
+            Alpine.data('visibleNavHighlighter', () => ({
+                headings: undefined,
+                visibleHeadingId: null,
+
+                init() {
+                    // Grab all the headings inside the main container.
+                    this.headings = document.querySelectorAll('[listen-for-intersection-of-titles] h2, [listen-for-intersection-of-titles] h3')
+
+                    this.assignHeadingIds()
+
+                    this.onScroll()
+                },
+
+                assignHeadingIds() {
+                    // If a heading doesn't have an [id], we'll give it one
+                    // based on its text content.
+                    this.headings.forEach(heading => {
+                        if (heading.id) return
+
+                        heading.id = heading.textContent.replace(/\s+/g, '-').toLowerCase()
+                    })
+                },
+
+                onScroll() {
+                    // We're gonna highlight the first heading above an imaginary
+                    // drawn horizontally across the center of the screen.
+
+                    // Get the distance from the top of that line.
+                    let relativeTop = window.innerHeight / 2
+
+                    let headingsByDistanceFromTop = {}
+
+                    // Populate an object of headings by their distance from our
+                    // imaginary lines as the keys.
+                    this.headings.forEach(heading => {
+                        headingsByDistanceFromTop[heading.getBoundingClientRect().top - relativeTop] = heading
+                    })
+
+                    // Grab the first one that is above that line.
+                    let closestNegativeTop = Math.max(...Object.keys(headingsByDistanceFromTop).filter(top => top < 0))
+
+                    // If we couldn't find one, don't highlight anything.
+                    if (closestNegativeTop >= 0 || [Infinity, NaN, -Infinity].includes(closestNegativeTop)) return this.visibleHeadingId = null
+
+                    // Otherwise, highlight that heading.
+                    this.visibleHeadingId = headingsByDistanceFromTop[closestNegativeTop].id
+                },
+            }))
+        })
+    </script>
+</body>
+</html>
+ 
