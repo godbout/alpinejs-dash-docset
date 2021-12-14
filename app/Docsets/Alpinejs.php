@@ -12,14 +12,12 @@ class Alpinejs extends BaseDocset
 {
     public const CODE = 'alpinejs';
     public const NAME = 'Alpine.js';
-    public const URL = 'github.com';
-    public const INDEX = 'alpinejs/alpine.html';
-    public const PLAYGROUND = 'https://alpinejs.codewithhugo.com/?type=components';
+    public const URL = 'alpinejs.dev';
+    public const INDEX = 'start-here.html';
+    public const PLAYGROUND = 'https://alpinejs.codewithhugo.com';
     public const ICON_16 = '../../icons/icon.png';
     public const ICON_32 = '../../icons/icon@2x.png';
-    public const EXTERNAL_DOMAINS = [
-        'githubassets.com',
-    ];
+    public const EXTERNAL_DOMAINS = [];
 
 
     public function grab(): bool
