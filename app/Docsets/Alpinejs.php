@@ -58,11 +58,11 @@ class Alpinejs extends BaseDocset
     {
         $entries = collect();
 
-        $crawler->filter('.entry-content h2')->each(function (HtmlPageCrawler $node) use ($entries) {
+        $crawler->filter('body > aside:first-of-type ul > li > ul > li')->each(function (HtmlPageCrawler $node) use ($entries) {
             $entries->push([
                 'name' => trim($node->text()),
                 'type' => 'Guide',
-                'path' => $this->url() . '/alpinejs/' . $node->children('a')->attr('href')
+                'path' => $this->url() . '/' . $node->children('a')->attr('href')
             ]);
         });
 
