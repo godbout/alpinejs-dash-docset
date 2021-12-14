@@ -49,7 +49,7 @@ class Alpinejs extends BaseDocset
         $entries = collect();
 
         $entries = $entries->merge($this->guideEntries($crawler));
-        $entries = $entries->merge($this->sectionEntries($crawler));
+        $entries = $entries->merge($this->sectionEntries($crawler, $file));
 
         return $entries;
     }
@@ -69,16 +69,18 @@ class Alpinejs extends BaseDocset
         return $entries;
     }
 
-    protected function sectionEntries(HtmlPageCrawler $crawler)
+    protected function sectionEntries(HtmlPageCrawler $crawler, string $file)
     {
         $entries = collect();
 
-        $crawler->filter('.entry-content h3')->each(function (HtmlPageCrawler $node) use ($entries) {
-            $entries->push([
-                'name' => trim($node->text()),
-                'type' => 'Section',
-                'path' => $this->url() . '/alpinejs/' . $node->children('a')->attr('href')
-            ]);
+        $crawler->filter('main > div > h2')->each(function (HtmlPageCrawler $node) use ($entries, $file) {
+            if ($node->children('a')->count() != 0) {
+                $entries->push([
+                    'name' => trim($node->text()),
+                    'type' => 'Section',
+                    'path' => Str::after($file . '#' . Str::slug($node->text()), $this->innerDirectory()),
+                ]);
+            }
         });
 
         return $entries;
