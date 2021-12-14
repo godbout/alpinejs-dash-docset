@@ -90,19 +90,9 @@ class Alpinejs extends BaseDocset
     {
         $crawler = HtmlPageCrawler::create(Storage::get($file));
 
-        $this->removeGitHubNavbar($crawler);
-        $this->removeRepositoryNavigation($crawler);
-        $this->removeSignupPrompt($crawler);
-        $this->removeFileNavigation($crawler);
-        $this->removeRepositoryDetails($crawler);
+        $this->removeHeader($crawler);
+        $this->removeLeftSidebar($crawler);
         $this->removeRightSidebar($crawler);
-        $this->removeWeirdBoxHeader($crawler);
-        $this->removeContentBorder($crawler);
-        $this->removeVersionSpecificBadges($crawler);
-
-        $this->removeFooter($crawler);
-
-        $this->removeCrossOriginAndIntegrity($crawler);
 
         $this->insertOnlineRedirection($crawler);
         $this->insertDashTableOfContents($crawler);
@@ -110,62 +100,19 @@ class Alpinejs extends BaseDocset
         return $crawler->saveHTML();
     }
 
-    protected function removeGitHubNavbar(HtmlPageCrawler $crawler)
+    protected function removeHeader(HtmlPageCrawler $crawler)
     {
-        $crawler->filter('.js-header-wrapper')->remove();
+        $crawler->filter('header')->remove();
     }
 
-    protected function removeRepositoryNavigation(HtmlPageCrawler $crawler)
+    protected function removeLeftSidebar(HtmlPageCrawler $crawler)
     {
-        $crawler->filter('.bg-gray-light.pt-3.hide-full-screen.mb-5')->remove();
-    }
-
-    protected function removeSignupPrompt(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('signup-prompt')->remove();
-    }
-
-    protected function removeFileNavigation(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('.file-navigation')->remove();
-    }
-
-    protected function removeRepositoryDetails(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('.Box.mb-3')->remove();
+        $crawler->filter('body > aside:first-of-type')->remove();
     }
 
     protected function removeRightSidebar(HtmlPageCrawler $crawler)
     {
-        $crawler->filter('.flex-shrink-0.col-12.col-md-3')->remove();
-    }
-
-    protected function removeWeirdBoxHeader(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('.Box-header')->remove();
-    }
-
-    protected function removeContentBorder(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('#readme')->addClass('border-0 !important');
-    }
-
-    protected function removeVersionSpecificBadges(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('[alt="npm bundle size"]')->remove();
-        $crawler->filter('[alt="npm version"]')->remove();
-    }
-
-    protected function removeFooter(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('.footer')->remove();
-    }
-
-    protected function removeCrossOriginAndIntegrity(HtmlPageCrawler $crawler)
-    {
-        $crawler->filter('script, link')
-            ->removeAttribute('integrity')
-            ->removeAttribute('crossorigin');
+        $crawler->filter('body > aside:last-of-type')->remove();
     }
 
     protected function insertOnlineRedirection(HtmlPageCrawler $crawler)
