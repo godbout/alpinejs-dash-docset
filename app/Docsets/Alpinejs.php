@@ -48,23 +48,26 @@ class Alpinejs extends BaseDocset
 
         $entries = collect();
 
-        $entries = $entries->merge($this->guideEntries($crawler));
+        $entries = $entries->merge($this->guideEntries($crawler, $file));
         $entries = $entries->merge($this->sectionEntries($crawler, $file));
 
         return $entries;
     }
 
-    protected function guideEntries(HtmlPageCrawler $crawler)
+    protected function guideEntries(HtmlPageCrawler $crawler, string $file)
     {
         $entries = collect();
 
-        $crawler->filter('body > aside:first-of-type ul > li > ul > li')->each(function (HtmlPageCrawler $node) use ($entries) {
-            $entries->push([
-                'name' => trim($node->text()),
-                'type' => 'Guide',
-                'path' => $this->url() . '/' . $node->children('a')->attr('href')
-            ]);
-        });
+        if (Str::contains($file, "{$this->url()}/start-here.html")) {
+            $crawler->filter('body > aside:first-of-type ul > li > ul > li')->each(function (HtmlPageCrawler $node) use ($entries) {
+                var_dump($this->url() . '/' . $node->children('a')->attr('href'));
+                $entries->push([
+                    'name' => trim($node->text()),
+                    'type' => 'Guide',
+                    'path' => $this->url() . '/' . $node->children('a')->attr('href')
+                ]);
+            });
+        }
 
         return $entries;
     }
