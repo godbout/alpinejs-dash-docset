@@ -60,7 +60,6 @@ class Alpinejs extends BaseDocset
 
         if (Str::contains($file, "{$this->url()}/start-here.html")) {
             $crawler->filter('body > aside:first-of-type ul > li > ul > li')->each(function (HtmlPageCrawler $node) use ($entries) {
-                var_dump($this->url() . '/' . $node->children('a')->attr('href'));
                 $entries->push([
                     'name' => trim($node->text()),
                     'type' => 'Guide',
@@ -96,6 +95,10 @@ class Alpinejs extends BaseDocset
         $this->removeHeader($crawler);
         $this->removeLeftSidebar($crawler);
         $this->removeRightSidebar($crawler);
+        $this->updateTopPadding($crawler);
+        $this->updateLeftPadding($crawler);
+        $this->updateContainerWidthAndMargins($crawler);
+        $this->updateBottomPadding($crawler);
 
         $this->insertOnlineRedirection($crawler);
         $this->insertDashTableOfContents($crawler);
@@ -116,6 +119,43 @@ class Alpinejs extends BaseDocset
     protected function removeRightSidebar(HtmlPageCrawler $crawler)
     {
         $crawler->filter('body > aside:last-of-type')->remove();
+    }
+
+    protected function updateTopPadding(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('main')
+            ->removeClass('pt-24')
+            ->addClass('pt-6')
+        ;
+    }
+
+    protected function updateLeftPadding(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('main')
+            ->removeClass('md:pl-48')
+            ->removeClass('lg:pl-64')
+            ->removeClass('pl-0')
+            ->addClass('pl-6')
+            ->removeClass('xl:pr-64')
+            ->removeClass('pr-0')
+            ->addClass('pr-6')
+        ;
+    }
+
+    protected function updateContainerWidthAndMargins(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('main > div:first-of-type')
+            ->removeClass('m-auto')
+            ->removeClass('max-w-3xl')
+        ;
+    }
+
+    protected function updateBottomPadding(HtmlPageCrawler $crawler)
+    {
+        $crawler->filter('main > div:first-of-type')
+            ->removeClass('pb-24')
+            ->addClass('pb-6')
+        ;
     }
 
     protected function insertOnlineRedirection(HtmlPageCrawler $crawler)
