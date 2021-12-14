@@ -170,7 +170,7 @@ class Alpinejs extends BaseDocset
         $crawler->filter('head')
             ->before('<a name="//apple_ref/cpp/Section/Top" class="dashAnchor"></a>');
 
-        $crawler->filter('h3')->each(function (HtmlPageCrawler $node) {
+        $crawler->filter('h2, h3')->each(function (HtmlPageCrawler $node) {
             $node->prepend(
                 '<a id="'
                 . Str::slug($node->text())
