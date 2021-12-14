@@ -22,15 +22,10 @@ class Alpinejs extends BaseDocset
 
     public function grab(): bool
     {
-        $toGet = implode('|', [
-            'github\.githubassets\.com/assets/',
-        ]);
-
         system(
             "echo; wget github.com/alpinejs/alpine \
                 --mirror \
                 --trust-server-names \
-                --accept-regex='{$toGet}' \
                 --ignore-case \
                 --page-requisites \
                 --adjust-extension \
